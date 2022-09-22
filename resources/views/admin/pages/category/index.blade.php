@@ -25,6 +25,14 @@
                             <td>
                                 <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                 <a href="{{ route('categories.destroy', ['category' => $category]) }}" class="btn btn-dark"><i class="fas fa-trash"></i></a>
+                                <a href="{{ route('categories.show', ['category' => $category]) }}" class="btn btn-dark"><i class="fas fa-trash"></i></a>
+                            </td>
+                            <td>
+                                <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-dark">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
