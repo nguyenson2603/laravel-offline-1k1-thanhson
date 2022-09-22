@@ -37,7 +37,7 @@ use App\Helpers\Template;
                 <tbody>
                     @foreach ($products as $product)
                         @php
-                            $status = Template::showButtonStatus($product);
+                            $status = Template::showButtonStatus($product, ['task' => 'product']);
                         @endphp
                         <tr>
                             <td>{{ $product['id'] }}</td>
@@ -62,9 +62,10 @@ use App\Helpers\Template;
                 </tbody>
             </table>
         </div>
+        <!-- /.card-body -->
         <div class="card-footer">
             {!! $products->appends(request()->input())->links('pagination.admin.pagination_backend') !!}
         </div>
-        <!-- /.card-body -->
+        <!-- /.card-footer -->
     </div>
 @endsection

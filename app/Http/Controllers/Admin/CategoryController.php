@@ -15,10 +15,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::all();
-        return view('admin.pages.category.index', compact('categories'));
+        $search = $request->search ?? '';
+        if ($search != '') {
+            $categories = Category::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+        } else {
+            $categories = Category::orderBy('id', 'desc')->paginate(5);
+        }
+        return view('admin.pages.category.index', compact('categories', 'search'));
     }
 
     /**
@@ -74,7 +79,10 @@ class CategoryController extends Controller
      */
     public function update(UpdateRequest $request, Category $category)
     {
-        Category::where('id', $category->id)->update(['name' => $request->name]);
+        Category::where('id', $category->id)->update([
+            'name' => $request->name,
+            'status' => $request->status,
+        ]);
         return redirect()->route('categories.index');
     }
 
@@ -87,6 +95,14 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
+        return redirect()->route('categories.index');
+    }
+
+    public function status(Category $category)
+    {
+        $id = $category->id;
+        $status = ($category->status == 1) ? 0 : 1;
+        Category::where('id', $id)->update(['status' => $status]);
         return redirect()->route('categories.index');
     }
 }

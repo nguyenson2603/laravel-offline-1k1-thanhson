@@ -29,4 +29,5 @@ Route::get('/', function () {
 Route::get('/products/change-status/{product}', [ProductController::class, 'status'])->name('products.status');
 Route::resource('products', ProductController::class);
 /*----------------- Category -----------------*/
+Route::get('/categories/change-status/{category}', [CategoryController::class, 'status'])->name('categories.status');
 Route::resource('categories', CategoryController::class);

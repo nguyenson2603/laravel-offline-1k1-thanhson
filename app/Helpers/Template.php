@@ -4,10 +4,14 @@ namespace App\Helpers;
 
 class Template
 {
-    public static function showButtonStatus($product)
+    public static function showButtonStatus($param, $options = null)
     {
-        $status = $product->status;
-        $link = route('products.status', ['product' => $product]);
+        $status = $param->status;
+        if($options['task'] == 'product'){
+            $link = route('products.status', ['product' => $param]);
+        }if ($options['task'] == 'category') {
+            $link = route('categories.status', ['category' => $param]);
+        }
         $class = 'btn-primary';
         $text = 'Chưa kích hoạt';
         if($status == 1){

@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\Form;
+@endphp
 @extends('admin.app')
 @section('content')
     @if ($errors->any())
@@ -25,6 +28,7 @@
                         <label for="exampleInputEmail1">Name</label>
                         <input type="text" class="form-control" name="name">
                     </div>
+                    {!! Form::selectBox('status', [1 => 'Kích hoạt', 0 => 'Chưa kích hoạt'], null) !!}
                 </div>
                 <!-- /.card-body -->
 
