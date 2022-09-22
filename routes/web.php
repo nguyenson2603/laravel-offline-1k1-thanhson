@@ -25,5 +25,8 @@ Route::get('/', function () {
 // Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 // Route::put('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
 
-route::resource('categories', CategoryController::class);
-route::resource('products', ProductController::class);
+/*----------------- Product -----------------*/
+Route::get('/products/change-status/{product}', [ProductController::class, 'status'])->name('products.status');
+Route::resource('products', ProductController::class);
+/*----------------- Category -----------------*/
+Route::resource('categories', CategoryController::class);

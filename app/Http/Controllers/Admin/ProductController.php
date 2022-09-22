@@ -15,10 +15,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('id', 'desc')->paginate(5);
-        return view('admin.pages.product.index', compact('products'));
+        $search = $request->search ?? '';
+        if ($search != '') {
+            $products = Product::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
+        } else {
+            $products = Product::orderBy('id', 'desc')->paginate(5);
+        }
+        return view('admin.pages.product.index', compact('products', 'search'));
     }
 
     /**
@@ -91,6 +96,14 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
+        return redirect()->route('products.index');
+    }
+
+    public function status(Product $product)
+    {
+        $id = $product->id;
+        $status = ($product->status == 1) ? 0 : 1;
+        Product::where('id', $id)->update(['status' => $status]);
         return redirect()->route('products.index');
     }
 }

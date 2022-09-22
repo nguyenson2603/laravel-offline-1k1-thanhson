@@ -1,19 +1,24 @@
 @extends('admin.app')
-@push('style')
-	<style type="text/css">
-		.my-active span{
-			background-color: #5cb85c !important;
-			color: white !important;
-			border-color: #5cb85c !important;
-		}
-	</style>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-@endpush
+@php
+use App\Helpers\Template;
+@endphp
 @section('content')
     <div class="card">
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Danh sách</h4>
+                <form action="">
+                    @csrf
+                    <div class="input-group">
+                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Search..."
+                            value="{{ $search }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
                 <a href="{{ route('products.create') }}" class="btn btn-success">Thêm mới</a>
             </div>
         </div>
@@ -25,19 +30,23 @@
                         <th style="width: 15px">ID</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Status</th>
+                        <th class="text-center">Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
+                        @php
+                            $status = Template::showButtonStatus($product);
+                        @endphp
                         <tr>
                             <td>{{ $product['id'] }}</td>
                             <td>{{ $product['name'] }}</td>
                             <td>{{ '$' . number_format($product['price']) }}</td>
-                            <td>{{ $product['status'] }}</td>
+                            <td class="text-center">{!! $status !!}</td>
                             <td>
-                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST" class="form-delete">
+                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST"
+                                    class="form-delete">
                                     @csrf
                                     @method('DELETE')
                                     <a href="{{ route('products.edit', ['product' => $product]) }}"
