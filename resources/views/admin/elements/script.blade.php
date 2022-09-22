@@ -3,3 +3,5 @@
 <script src="{{ asset('admin-theme/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin-theme/js/adminlte.min.js') }}"></script>
+<!-- My Custom -->
+<script src="{{ asset('admin-theme/js/custom.js') }}"></script>

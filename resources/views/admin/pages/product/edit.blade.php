@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\Form;
+@endphp
 @extends('admin.app')
 @section('content')
     @if ($errors->any())
@@ -13,7 +16,7 @@
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Cập nhật</h4>
-                <a href="{{ route('categories.index') }}" class="btn btn-warning">Quay lại</a>
+                <a href="{{ route('products.index') }}" class="btn btn-warning">Quay lại</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -30,10 +33,7 @@
                         <label for="exampleInputEmail1">Price</label>
                         <input type="text" class="form-control" name="price" value="{{ $product->price }}">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Status</label>
-                        <input type="text" class="form-control" name="status" value="{{ $product->status }}">
-                    </div>
+                    {!! Form::selectBox('status', [1 => 'Kích hoạt', 0 => 'Chưa kích hoạt'], $product->status) !!}
                 </div>
                 <!-- /.card-body -->
 

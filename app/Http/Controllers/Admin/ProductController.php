@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.product.index', ['products' => Product::all()]);
+        $products = Product::orderBy('id', 'desc')->paginate(5);
+        return view('admin.pages.product.index', compact('products'));
     }
 
     /**
@@ -34,9 +37,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        Product::create($request->all());
+        return redirect()->route('products.index');
     }
 
     /**
@@ -68,9 +72,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Product $product)
     {
-        //
+        Product::where('id', $product->id)->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'status' => $request->status,
+        ]);
+        return redirect()->route('products.index');
     }
 
     /**
@@ -81,6 +90,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        Product::destroy($product->id);
+        return redirect()->route('products.index');
     }
 }

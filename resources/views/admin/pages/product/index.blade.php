@@ -1,4 +1,14 @@
 @extends('admin.app')
+@push('style')
+	<style type="text/css">
+		.my-active span{
+			background-color: #5cb85c !important;
+			color: white !important;
+			border-color: #5cb85c !important;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@endpush
 @section('content')
     <div class="card">
         <div class="card-header ">
@@ -27,11 +37,12 @@
                             <td>{{ '$' . number_format($product['price']) }}</td>
                             <td>{{ $product['status'] }}</td>
                             <td>
-                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
+                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST" class="form-delete">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                    <button class="btn btn-dark"><i class="fas fa-trash"></i></button>
+                                    <a href="{{ route('products.edit', ['product' => $product]) }}"
+                                        class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                    <a href="" class="btn btn-dark btn-delete"><i class="fas fa-trash"></i></a>
                                 </form>
                             </td>
                             <td>
@@ -41,6 +52,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="card-footer">
+            {!! $products->appends(request()->input())->links('pagination.admin.pagination_backend') !!}
         </div>
         <!-- /.card-body -->
     </div>
