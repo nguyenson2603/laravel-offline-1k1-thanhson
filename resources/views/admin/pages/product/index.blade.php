@@ -4,7 +4,7 @@
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Danh sách</h4>
-                <a href="{{ route('categories.create') }}" class="btn btn-success">Thêm mới</a>
+                <a href="{{ route('products.create') }}" class="btn btn-success">Thêm mới</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -14,19 +14,23 @@
                     <tr>
                         <th style="width: 15px">ID</th>
                         <th>Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($products as $product)
                         <tr>
-                            <td>{{ $category['id'] }}</td>
-                            <td>{{ $category['name'] }}</td>
+                            <td>{{ $product['id'] }}</td>
+                            <td>{{ $product['name'] }}</td>
+                            <td>{{ '$' . number_format($product['price']) }}</td>
+                            <td>{{ $product['status'] }}</td>
                             <td>
-                                <form action="{{ route('categories.destroy', ['category' => $category]) }}" method="POST">
+                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                    <a href="{{ route('products.edit', ['product' => $product]) }}" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                     <button class="btn btn-dark"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>

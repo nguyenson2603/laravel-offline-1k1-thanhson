@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category\StoreRequest;
-use App\Http\Requests\Category\UpdateRequest;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.pages.category.index', compact('categories'));
+        return view('admin.pages.product.index', ['products' => Product::all()]);
     }
 
     /**
@@ -28,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.category.create');
+        return view('admin.pages.product.create');
     }
 
     /**
@@ -37,10 +34,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
-        Category::create($request->all());
-        return redirect()->route('categories.index');
+        //
     }
 
     /**
@@ -49,9 +45,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        dd($category);
+        //
     }
 
     /**
@@ -60,9 +56,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Product $product)
     {
-        return view('admin.pages.category.edit', compact('category'));
+        return view('admin.pages.product.edit', ['product' => $product]);
     }
 
     /**
@@ -72,10 +68,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, Category $category)
+    public function update(Request $request, $id)
     {
-        Category::where('id', $category->id)->update(['name' => $request->name]);
-        return redirect()->route('categories.index');
+        //
     }
 
     /**
@@ -84,9 +79,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Product $product)
     {
-        Category::destroy($category->id);
-        return redirect()->route('categories.index');
+        //
     }
 }
