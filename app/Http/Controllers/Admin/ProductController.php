@@ -21,7 +21,7 @@ class ProductController extends Controller
         if ($search != '') {
             $products = Product::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
         } else {
-            $products = Product::orderBy('id', 'desc')->paginate(5);
+            $products = Product::with('category')->orderBy('id', 'desc')->paginate(15);
         }
         return view('admin.pages.product.index', compact('products', 'search'));
     }

@@ -19,7 +19,7 @@ use App\Helpers\Template;
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('products.create') }}" class="btn btn-success">Thêm mới</a>
+                <a href="{{ route('admin.products.create') }}" class="btn btn-success">Thêm mới</a>
             </div>
         </div>
         <!-- /.card-header -->
@@ -30,6 +30,8 @@ use App\Helpers\Template;
                         <th style="width: 15px">ID</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Price Formatted</th>
+                        <th>Category</th>
                         <th class="text-center">Status</th>
                         <th>Action</th>
                     </tr>
@@ -42,14 +44,16 @@ use App\Helpers\Template;
                         <tr>
                             <td>{{ $product['id'] }}</td>
                             <td>{{ $product['name'] }}</td>
-                            <td>{{ '$' . number_format($product['price']) }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->price_formatted }}</td>
+                            <td>{{ $product->category->name }}</td>
                             <td class="text-center">{!! $status !!}</td>
                             <td>
-                                <form action="{{ route('products.destroy', ['product' => $product]) }}" method="POST"
+                                <form action="{{ route('admin.products.destroy', ['product' => $product]) }}" method="POST"
                                     class="form-delete">
                                     @csrf
                                     @method('DELETE')
-                                    <a href="{{ route('products.edit', ['product' => $product]) }}"
+                                    <a href="{{ route('admin.products.edit', ['product' => $product]) }}"
                                         class="btn btn-success"><i class="fas fa-pen"></i></a>
                                     <a href="" class="btn btn-dark btn-delete"><i class="fas fa-trash"></i></a>
                                 </form>

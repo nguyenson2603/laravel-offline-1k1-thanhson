@@ -8,9 +8,9 @@ class Template
     {
         $status = $param->status;
         if($options['task'] == 'product'){
-            $link = route('products.status', ['product' => $param]);
+            $link = route('admin.products.status', ['product' => $param]);
         }if ($options['task'] == 'category') {
-            $link = route('categories.status', ['category' => $param]);
+            $link = route('admin.categories.status', ['category' => $param]);
         }
         $class = 'btn-primary';
         $text = 'Chưa kích hoạt';

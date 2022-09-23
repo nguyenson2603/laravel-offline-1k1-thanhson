@@ -25,9 +25,13 @@ Route::get('/', function () {
 // Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 // Route::put('/categories/update', [CategoryController::class, 'update'])->name('categories.update');
 
-/*----------------- Product -----------------*/
-Route::get('/products/change-status/{product}', [ProductController::class, 'status'])->name('products.status');
-Route::resource('products', ProductController::class);
-/*----------------- Category -----------------*/
-Route::get('/categories/change-status/{category}', [CategoryController::class, 'status'])->name('categories.status');
-Route::resource('categories', CategoryController::class);
+Route::prefix('admin')->group(function () {
+    Route::name('admin.')->group(function () {
+        /*----------------- Product -----------------*/
+        Route::get('/products/change-status/{product}', [ProductController::class, 'status'])->name('products.status');
+        Route::resource('products', ProductController::class);
+        /*----------------- Category -----------------*/
+        Route::get('/categories/change-status/{category}', [CategoryController::class, 'status'])->name('categories.status');
+        Route::resource('categories', CategoryController::class);
+    });
+});

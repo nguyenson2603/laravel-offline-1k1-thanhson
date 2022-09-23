@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
+use Illuminate\Support\Facades\View;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->model = new Category();
+        View::share('model', 'categories');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,13 +23,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search ?? '';
-        if ($search != '') {
-            $categories = Category::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
-        } else {
-            $categories = Category::orderBy('id', 'desc')->paginate(5);
-        }
-        return view('admin.pages.category.index', compact('categories', 'search'));
+        $categories = $this->model->getList($request->all());
+        return view('admin.pages.category.index', compact('categories'));
     }
 
     /**
@@ -45,7 +46,7 @@ class CategoryController extends Controller
     public function store(StoreRequest $request)
     {
         Category::create($request->all());
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -83,7 +84,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'status' => $request->status,
         ]);
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -94,8 +95,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::destroy($category->id);
-        return redirect()->route('categories.index');
+        $category->delete();
+        return redirect()->route('admin.categories.index');
     }
 
     public function status(Category $category)
@@ -103,6 +104,6 @@ class CategoryController extends Controller
         $id = $category->id;
         $status = ($category->status == 1) ? 0 : 1;
         Category::where('id', $id)->update(['status' => $status]);
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }

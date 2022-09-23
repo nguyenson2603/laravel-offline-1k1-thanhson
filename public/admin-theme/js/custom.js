@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    $('.btn-delete').click(function (e) {
-        e.preventDefault();
+    $('.btn-delete').click(function () {
+        const ele = $(this);
         let text = "Bạn có chắc muốn xóa!";
-        if (confirm(text) == true) {
-            $('.form-delete').submit();
-        }
+        if (confirm(text)) ele.parent().submit();
     });
 });
