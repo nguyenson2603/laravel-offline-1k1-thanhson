@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->unsignedInteger('price');
             $table->boolean('status');
+            $table->string('description');
+            $table->string('content');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

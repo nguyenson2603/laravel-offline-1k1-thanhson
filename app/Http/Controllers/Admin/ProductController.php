@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\StoreRequest;
-use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->model = new Product();
+        View::share('model', 'products');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,13 +23,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search ?? '';
-        if ($search != '') {
-            $products = Product::where('name', 'LIKE', '%' . $search . '%')->paginate(5);
-        } else {
-            $products = Product::with('category')->orderBy('id', 'desc')->paginate(15);
-        }
-        return view('admin.pages.product.index', compact('products', 'search'));
+        $products = $this->model->getList($request->all());
+        return view('admin.pages.product.index', compact('products'));
     }
 
     /**
@@ -45,7 +46,7 @@ class ProductController extends Controller
     public function store(StoreRequest $request)
     {
         Product::create($request->all());
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -84,7 +85,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'status' => $request->status,
         ]);
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -96,7 +97,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     public function status(Product $product)
@@ -104,6 +105,6 @@ class ProductController extends Controller
         $id = $product->id;
         $status = ($product->status == 1) ? 0 : 1;
         Product::where('id', $id)->update(['status' => $status]);
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 }

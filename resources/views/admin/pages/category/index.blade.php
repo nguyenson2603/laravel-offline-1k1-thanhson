@@ -62,7 +62,7 @@ use App\Helpers\Template;
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            {{ $categories->links() }}
+            {!! $categories->appends(request()->input())->links() !!}
         </div>
         <!-- /.card-footer -->
     </div>

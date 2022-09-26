@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,12 @@ Route::prefix('admin')->group(function () {
         /*----------------- Category -----------------*/
         Route::get('/categories/change-status/{category}', [CategoryController::class, 'status'])->name('categories.status');
         Route::resource('categories', CategoryController::class);
+    });
+});
+
+Route::prefix('frontend')->group(function () {
+    Route::name('frontend.')->group(function () {
+        /*----------------- Home -----------------*/
+        Route::get('/home', [HomeController::class, 'index'])->name('home.index');
     });
 });

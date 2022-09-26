@@ -18,6 +18,8 @@ class ProductFactory extends Factory
             'name' => $this->faker->words(2, true),
             'price' => $this->faker->randomNumber(9, true),
             'status' => $this->faker->numberBetween(0, 1),
+            'description' => $this->faker->sentence(5),
+            'content' => $this->faker->sentence(10),
             // 'category_id' => $this->faker->numberBetween(1, 14),
             // 'category_id' => Category::factory(),
             'category_id' => Category::inRandomOrder()->first()->id
