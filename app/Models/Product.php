@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'status', 'description', 'content'];
+    protected $fillable = ['name', 'price', 'status', 'description', 'content', 'category_id'];
 
     // public function getPriceAttribute($value)
     // {
@@ -22,11 +22,16 @@ class Product extends Model
 
     public function getList($params) {
         $search = isset($params['search']) ? trim($params['search']) : '';
+        $filter = isset($params['filter']) ? trim($params['filter']) : '';
 
         $query = self::with('category')->select();
 
         if ($search != '') {
-            $query->where('name', 'LIKE', "%{$search}%");
+            if($filter != ''){
+                $query->where("{$filter}", 'LIKE', "%{$search}%");
+            }else{
+                $query->where("name", 'LIKE', "%{$search}%");
+            }
         }
 
         $result = $query->latest('id')->paginate(5);

@@ -9,6 +9,16 @@ use App\Helpers\Template;
                 <h4 class="mb-0">Danh sách</h4>
                 <form action="" method="GET">
                     <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" id="input-group-prepend">
+                                {{ request()->get('filter') != '' ? request()->get('filter'):'Type..' }}
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item btn-click" data-value="id">id</button>
+                                <button class="dropdown-item btn-click" data-value="name">Name</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="filter" class="data-field" value="{{ request()->get('filter') }}">
                         <input type="search" name="search" class="form-control form-control-lg" placeholder="Search..."
                             value="{{ request()->get('search') }}">
                         <div class="input-group-append">
@@ -52,7 +62,8 @@ use App\Helpers\Template;
                                     @method('DELETE')
                                     <a href="{{ route('admin.categories.edit', ['category' => $category]) }}"
                                         class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                    <button type="button" class="btn btn-dark btn-delete"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-dark btn-delete"><i
+                                            class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

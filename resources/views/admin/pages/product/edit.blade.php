@@ -1,12 +1,13 @@
 @php
-    use App\Helpers\Form;
+use App\Models\Category;
+$categories = new Category();
 @endphp
 @extends('admin.app')
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h5><i class="fas fa-exclamation-triangle"></i>  Lỗi cú pháp!</h5>
+            <h5><i class="fas fa-exclamation-triangle"></i> Lỗi cú pháp!</h5>
             @foreach ($errors->all() as $error)
                 <p>- {{ $error }}</p>
             @endforeach
@@ -31,9 +32,39 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Price</label>
-                        <input type="text" class="form-control" name="price" value="{{ $product->price }}">
+                        <input type="number" class="form-control" name="price" value="{{ $product->price }}">
                     </div>
-                    {!! Form::selectBox('status', [1 => 'Kích hoạt', 0 => 'Chưa kích hoạt'], $product->status) !!}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <input type="text" class="form-control" name="description" value="{{ $product->description }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Content</label>
+                        <textarea name="content" cols="30" rows="3" class="form-control">
+                            {{ $product->content }}
+                        </textarea>
+                    </div>
+                    @include('admin.components.select-box', [
+                        'title' => 'Category',
+                        'name' => 'category_id',
+                        'options' => $categories->categories(),
+                        'value' => $product->category_id,
+                    ])
+                    @include('admin.components.select-box', [
+                        'title' => 'Status',
+                        'name' => 'status',
+                        'options' => [
+                            [
+                                'id' => 1,
+                                'name' => 'Kích hoạt',
+                            ],
+                            [
+                                'id' => 0,
+                                'name' => 'Chưa kích hoạt',
+                            ],
+                        ],
+                        'value' => $product->status,
+                    ])
                 </div>
                 <!-- /.card-body -->
 

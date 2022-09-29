@@ -1,5 +1,6 @@
 @php
-    use App\Helpers\Form;
+use App\Models\Category;
+$categories = new Category();
 @endphp
 @extends('admin.app')
 @section('content')
@@ -30,9 +31,35 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Price</label>
-                        <input type="text" class="form-control" name="price">
+                        <input type="number" class="form-control" name="price">
                     </div>
-                    {!! Form::selectBox('status', [1 => 'Kích hoạt', 0 => 'Chưa kích hoạt'], null) !!}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <input type="text" class="form-control" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Content</label>
+                        <textarea name="content" cols="30" rows="3" class="form-control"></textarea>
+                    </div>
+                    @include('admin.components.select-box', [
+                        'title' => 'Category',
+                        'name' => 'category_id',
+                        'options' => $categories->categories(),
+                    ])
+                    @include('admin.components.select-box', [
+                        'title' => 'Status',
+                        'name' => 'status',
+                        'options' => [
+                            [
+                                'id' => 1,
+                                'name' => 'Kích hoạt',
+                            ],
+                            [
+                                'id' => 0,
+                                'name' => 'Chưa kích hoạt',
+                            ],
+                        ],
+                    ])
                 </div>
                 <!-- /.card-body -->
 

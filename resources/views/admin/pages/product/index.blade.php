@@ -9,6 +9,22 @@ use App\Helpers\Template;
                 <h4 class="mb-0">Danh sách</h4>
                 <form action="" method="GET">
                     <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-expanded="false" id="input-group-prepend">
+                                {{ request()->get('filter') != '' ? request()->get('filter') : 'Type..' }}
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item btn-click" data-value="id">id</button>
+                                <button class="dropdown-item btn-click" data-value="name">Name</button>
+                                <button class="dropdown-item btn-click" data-value="description">Description</button>
+                                <button class="dropdown-item btn-click" data-value="content">Content</button>
+                                <button class="dropdown-item btn-click" data-value="price">Price</button>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <button class="dropdown-item btn-click" data-value="category_id">category_id</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="filter" class="data-field" value="{{ request()->get('filter') }}">
                         <input type="search" name="search" class="form-control form-control-lg" placeholder="Search..."
                             value="{{ request()->get('search') }}">
                         <div class="input-group-append">
@@ -26,7 +42,7 @@ use App\Helpers\Template;
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="width: 15px">ID</th>
+                        <th width="15px">ID</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Price Formatted</th>
@@ -42,7 +58,7 @@ use App\Helpers\Template;
                         @endphp
                         <tr>
                             <td>{{ $product['id'] }}</td>
-                            <td width="300px">
+                            <td width="30%">
                                 <strong>Name:</strong> {{ $product['name'] }} <br>
                                 <strong>Description:</strong> {{ $product['description'] }} <br>
                                 <strong>Content:</strong> {{ $product['content'] }} <br>
@@ -57,8 +73,8 @@ use App\Helpers\Template;
                                 ])
                             </td>
                             <td>
-                                <form action="{{ route('admin.products.destroy', ['product' => $product]) }}" method="POST"
-                                    class="form-delete">
+                                <form action="{{ route('admin.products.destroy', ['product' => $product]) }}"
+                                    method="POST" class="form-delete">
                                     @csrf
                                     @method('DELETE')
                                     <a href="{{ route('admin.products.edit', ['product' => $product]) }}"
