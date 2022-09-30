@@ -12,16 +12,17 @@ class Category extends Model
     protected $fillable = ['name', 'status'];
     protected $searchAccepted = ['name'];
 
-    public function getList($params = null) {
+    public function getList($params = null)
+    {
         $search = isset($params['search']) ? trim($params['search']) : '';
         $filter = isset($params['filter']) ? trim($params['filter']) : '';
 
         $query = self::with('products')->select();
 
         if ($search != '') {
-            if($filter != ''){
+            if ($filter != '') {
                 $query->where("{$filter}", 'LIKE', "%{$search}%");
-            }else{
+            } else {
                 $query->where("name", 'LIKE', "%{$search}%");
             }
         }
@@ -29,6 +30,11 @@ class Category extends Model
         $result = $query->latest('id')->paginate(5);
 
         return $result;
+    }
+
+    public function getProductListAttribute()
+    {
+        return $this->products->implode('name', '<br>');
     }
 
     public function categories()

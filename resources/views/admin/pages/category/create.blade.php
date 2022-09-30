@@ -16,12 +16,12 @@
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Thêm mới</h4>
-                <a href="{{ route('categories.index') }}" class="btn btn-warning">Quay lại</a>
+                <a href="{{ route('admin.categories.index') }}" class="btn btn-warning">Quay lại</a>
             </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-            <form method="POST" action="{{ route('categories.store') }}">
+            <form method="POST" action="{{ route('admin.categories.store') }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

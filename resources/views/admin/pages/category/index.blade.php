@@ -39,6 +39,7 @@ use App\Helpers\Template;
                         <th style="width: 15px">ID</th>
                         <th>Name</th>
                         <th>Products</th>
+                        <th>Products with Accesor</th>
                         <th class="text-center">Status</th>
                         <th>Action</th>
                     </tr>
@@ -49,6 +50,7 @@ use App\Helpers\Template;
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td>{!! $category->products->implode('name', '<br>') !!}</td>
+                            <td>{!! $category->product_list !!}</td>
                             <td class="text-center">
                                 @include('admin.components.button-status', [
                                     'item' => $category,

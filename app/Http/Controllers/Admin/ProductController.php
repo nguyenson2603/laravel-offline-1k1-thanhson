@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -34,7 +35,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.product.create');
+        $categories = Category::all();
+        return view('admin.pages.product.create', compact('categories'));
     }
 
     /**
@@ -68,7 +70,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.pages.product.edit', ['product' => $product]);
+        $categories = Category::all();
+        return view('admin.pages.product.edit', compact('product', 'categories'));
     }
 
     /**
