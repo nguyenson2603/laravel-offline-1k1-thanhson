@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <x-admin.select-status name="status" key-selected="0" />
+                        <x-admin.select-status name="status" key-selected="default" />
                     </div>
                 </div>
                 <!-- /.card-body -->

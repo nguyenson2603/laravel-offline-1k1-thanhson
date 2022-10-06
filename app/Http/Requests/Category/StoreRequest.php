@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'bail|required|min:5|unique:categories,name',
+            'status' => 'bail|in:0,1',
         ];
     }
 }

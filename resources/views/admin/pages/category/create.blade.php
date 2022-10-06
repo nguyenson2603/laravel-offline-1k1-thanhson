@@ -1,12 +1,12 @@
 @php
-    use App\Helpers\Form;
+use App\Helpers\Form;
 @endphp
 @extends('admin.app')
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h5><i class="fas fa-exclamation-triangle"></i>  Lỗi cú pháp!</h5>
+            <h5><i class="fas fa-exclamation-triangle"></i> Lỗi cú pháp!</h5>
             @foreach ($errors->all() as $error)
                 <p>- {{ $error }}</p>
             @endforeach
@@ -28,7 +28,10 @@
                         <label for="exampleInputEmail1">Name</label>
                         <input type="text" class="form-control" name="name">
                     </div>
-                    {!! Form::selectBox('status', [1 => 'Kích hoạt', 0 => 'Chưa kích hoạt'], null) !!}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Status</label>
+                        <x-admin.select-status name="status" key-selected="default" />
+                    </div>
                 </div>
                 <!-- /.card-body -->
 

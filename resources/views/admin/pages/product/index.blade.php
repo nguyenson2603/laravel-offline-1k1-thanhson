@@ -6,7 +6,7 @@ use App\Helpers\Template;
     <div class="card">
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">Danh sách</h4>
+                <x-admin.filter-status-product currentStatus="{{ $params['filter-status'] }}" params="{{ $params }}"/>
                 <form action="" method="GET">
                     <div class="input-group">
                         <div class="input-group-prepend">
