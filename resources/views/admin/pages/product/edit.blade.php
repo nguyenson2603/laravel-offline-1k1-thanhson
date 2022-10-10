@@ -1,7 +1,3 @@
-@php
-use App\Models\Category;
-$categories = new Category();
-@endphp
 @extends('admin.app')
 @section('content')
     @if ($errors->any())
@@ -44,27 +40,14 @@ $categories = new Category();
                             {{ $product->content }}
                         </textarea>
                     </div>
-                    @include('admin.components.select-box', [
-                        'title' => 'Category',
-                        'name' => 'category_id',
-                        'options' => $categories->categories(),
-                        'value' => $product->category_id,
-                    ])
-                    @include('admin.components.select-box', [
-                        'title' => 'Status',
-                        'name' => 'status',
-                        'options' => [
-                            [
-                                'id' => 1,
-                                'name' => 'Kích hoạt',
-                            ],
-                            [
-                                'id' => 0,
-                                'name' => 'Chưa kích hoạt',
-                            ],
-                        ],
-                        'value' => $product->status,
-                    ])
+                    <div class="form-group">
+                        <label for="category_id">Category</label>
+                        <x-admin.select-category name="category_id" key-selected="{{ $product->category_id }}" :values="$categories" />
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <x-admin.select-status name="status" key-selected="{{ $product->status }}" />
+                    </div>
                 </div>
                 <!-- /.card-body -->
 

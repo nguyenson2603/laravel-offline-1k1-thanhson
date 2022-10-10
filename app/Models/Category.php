@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -16,9 +17,12 @@ class Category extends Model
     {
         $search = isset($params['search']) ? trim($params['search']) : '';
         $filter = isset($params['filter']) ? trim($params['filter']) : '';
+        $filterStatus = isset($params['filter-status']) ? trim($params['filter-status']) : '';
 
         $query = self::with('products')->select();
-
+        if ($filterStatus !== 'all' && $filterStatus !== '') {
+            $query->where('status', '=', $filterStatus);
+        }
         if ($search != '') {
             if ($filter != '') {
                 $query->where("{$filter}", 'LIKE', "%{$search}%");
@@ -39,11 +43,19 @@ class Category extends Model
 
     public function categories()
     {
-        return self::with('products')->select('id', 'name')->latest()->get()->toArray();
+        return self::with('products')->select('id', 'name')->where('status', '1')->latest()->get()->toArray();
     }
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function countByStatus()
+    {
+        $result = null;
+        $query = self::with('products')->select(DB::raw('status, COUNT(id) as count'));
+        $result = $query->groupBy('status')->get()->toArray();
+        return $result;
     }
 }

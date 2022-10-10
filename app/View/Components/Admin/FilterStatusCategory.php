@@ -2,10 +2,10 @@
 
 namespace App\View\Components\Admin;
 
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\View\Component;
 
-class FilterStatusProduct extends Component
+class FilterStatusCategory extends Component
 {
     public $currentStatus;
     /**
@@ -18,8 +18,9 @@ class FilterStatusProduct extends Component
         $this->currentStatus = $currentStatus;
     }
 
-    public function status(){
-        $model = new Product();
+    public function status()
+    {
+        $model = new Category();
         $result = $model->countByStatus();
         array_unshift($result, [
             'status' => 'all',
@@ -35,6 +36,6 @@ class FilterStatusProduct extends Component
      */
     public function render()
     {
-        return view('components.admin.filter-status-product');
+        return view('components.admin.filter-status-category');
     }
 }

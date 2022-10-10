@@ -1,6 +1,3 @@
-@php
-use App\Helpers\Form;
-@endphp
 @extends('admin.app')
 @section('content')
     @if ($errors->any())

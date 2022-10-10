@@ -24,7 +24,8 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $categories = $this->model->getList($request->all());
-        return view('admin.pages.category.index', compact('categories'));
+        $params = $request;
+        return view('admin.pages.category.index', compact('categories', 'params'));
     }
 
     /**

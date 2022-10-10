@@ -26,7 +26,7 @@ class SelectCategory extends Component
 
     public function selected($value)
     {
-        return $value === $this->keySelected ? 'selected' : '';
+        return (string)$value === $this->keySelected ? 'selected' : '';
     }
 
     /**

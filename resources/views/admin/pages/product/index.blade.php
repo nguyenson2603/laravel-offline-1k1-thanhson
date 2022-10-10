@@ -1,27 +1,24 @@
 @extends('admin.app')
 @php
 use App\Helpers\Template;
+use App\Helpers\Highlight;
 @endphp
 @section('content')
     <div class="card">
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
-                <x-admin.filter-status-product currentStatus="{{ $params['filter-status'] }}" params="{{ $params }}"/>
+                <x-admin.filter-status-product currentStatus="{{ $params['filter-status'] }}" />
                 <form action="" method="GET">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                                aria-expanded="false" id="input-group-prepend">
-                                {{ request()->get('filter') != '' ? request()->get('filter') : 'Type..' }}
+                                aria-expanded="false" id="input-group-prepend" data-value="all">
+                                {{ request()->get('filter') != '' ? request()->get('filter') : 'all ' }}
                             </button>
                             <div class="dropdown-menu">
-                                <button class="dropdown-item btn-click" data-value="id">id</button>
+                                <button class="dropdown-item btn-click" data-value="all" selected>All</button>
                                 <button class="dropdown-item btn-click" data-value="name">Name</button>
-                                <button class="dropdown-item btn-click" data-value="description">Description</button>
-                                <button class="dropdown-item btn-click" data-value="content">Content</button>
                                 <button class="dropdown-item btn-click" data-value="price">Price</button>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <button class="dropdown-item btn-click" data-value="category_id">category_id</button>
                             </div>
                         </div>
                         <input type="hidden" name="filter" class="data-field" value="{{ request()->get('filter') }}">
@@ -52,42 +49,44 @@ use App\Helpers\Template;
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
-                        @php
-                            $status = Template::showButtonStatus($product, ['task' => 'product']);
-                        @endphp
-                        <tr>
-                            <td>{{ $product['id'] }}</td>
-                            <td width="30%">
-                                <strong>Name:</strong> {{ $product['name'] }} <br>
-                                <strong>Description:</strong> {{ $product['description'] }} <br>
-                                <strong>Content:</strong> {{ $product['content'] }} <br>
-                            </td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->price_formatted }}</td>
-                            <td>{{ $product->category->name }}</td>
-                            <td class="text-center">
-                                @include('admin.components.button-status', [
-                                    'item' => $product,
-                                    'model' => $model,
-                                ])
-                            </td>
-                            <td>
-                                <form action="{{ route('admin.products.destroy', ['product' => $product]) }}"
-                                    method="POST" class="form-delete">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="{{ route('admin.products.edit', ['product' => $product]) }}"
-                                        class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                    <button type="button" class="btn btn-dark btn-delete"><i
-                                            class="fas fa-trash"></i></button>
-                                </form>
-                            </td>
-                            <td>
+                    @if (count($products) > 0)
+                        @foreach ($products as $product)
+                            @php
+                                $status = Template::showButtonStatus($product, ['task' => 'product']);
+                            @endphp
+                            <tr>
+                                <td>{{ $product['id'] }}</td>
+                                <td width="20%">{!! Highlight::show($product->name, $params, 'name') !!}</td>
+                                <td>{!! Highlight::show($product->price, $params, 'price') !!}</td>
+                                <td>{!! Highlight::show($product->price_formatted, $params, 'price') !!}</td>
+                                <td>{{ $product->category->name }}</td>
+                                <td class="text-center">
+                                    @include('admin.components.button-status', [
+                                        'item' => $product,
+                                        'model' => $model,
+                                    ])
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.products.destroy', ['product' => $product]) }}"
+                                        method="POST" class="form-delete">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('admin.products.edit', ['product' => $product]) }}"
+                                            class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <button type="button" class="btn btn-dark btn-delete"><i
+                                                class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
+                                <td>
 
-                            </td>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="7" class="h3 text-center">Dữ liệu đang được cập nhật!!</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

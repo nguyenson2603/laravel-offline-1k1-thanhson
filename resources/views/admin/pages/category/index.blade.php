@@ -1,20 +1,21 @@
 @extends('admin.app')
 @php
 use App\Helpers\Template;
+use App\Helpers\Highlight;
 @endphp
 @section('content')
     <div class="card">
         <div class="card-header ">
             <div class="d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">Danh sách</h4>
+                <x-admin.filter-status-category currentStatus="{{ $params['filter-status'] }}" />
                 <form action="" method="GET">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" id="input-group-prepend">
-                                {{ request()->get('filter') != '' ? request()->get('filter'):'Type..' }}
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-expanded="false" id="input-group-prepend">
+                                {{ request()->get('filter') != '' ? request()->get('filter') : 'all' }}
                             </button>
                             <div class="dropdown-menu">
-                                <button class="dropdown-item btn-click" data-value="id">id</button>
                                 <button class="dropdown-item btn-click" data-value="name">Name</button>
                             </div>
                         </div>
@@ -45,31 +46,37 @@ use App\Helpers\Template;
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @if (count($categories) > 0)
+                        @foreach ($categories as $category)
+                            <tr>
+                                <td>{{ $category->id }}</td>
+                                <td>{!! Highlight::show($category->name, $params, 'name') !!}</td>
+                                <td>{!! $category->products->implode('name', '<br>') !!}</td>
+                                <td>{!! $category->product_list !!}</td>
+                                <td class="text-center">
+                                    @include('admin.components.button-status', [
+                                        'item' => $category,
+                                        'model' => $model,
+                                    ])
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.categories.destroy', ['category' => $category]) }}"
+                                        method="POST" class="form-delete form-{{ $category->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('admin.categories.edit', ['category' => $category]) }}"
+                                            class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <button type="button" class="btn btn-dark btn-delete"><i
+                                                class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{!! $category->products->implode('name', '<br>') !!}</td>
-                            <td>{!! $category->product_list !!}</td>
-                            <td class="text-center">
-                                @include('admin.components.button-status', [
-                                    'item' => $category,
-                                    'model' => $model,
-                                ])
-                            </td>
-                            <td>
-                                <form action="{{ route('admin.categories.destroy', ['category' => $category]) }}"
-                                    method="POST" class="form-delete form-{{ $category->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="{{ route('admin.categories.edit', ['category' => $category]) }}"
-                                        class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                    <button type="button" class="btn btn-dark btn-delete"><i
-                                            class="fas fa-trash"></i></button>
-                                </form>
-                            </td>
+                            <td colspan="7" class="h3 text-center">Dữ liệu đang được cập nhật!!</td>
                         </tr>
-                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
