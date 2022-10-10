@@ -385,7 +385,7 @@
                                             </a>
                                     </li>
                                     <li class="onhover-dropdown mobile-account">
-                                        <a href="login.html">
+                                        <a href="{{ route('frontend.home.login') }}">
                                             <img src="{{ asset('frontend-theme/assets/images/icon/white-icon/user.png') }}" alt="">
                                         </a>
                                     </li>

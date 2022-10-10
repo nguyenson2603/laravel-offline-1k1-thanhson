@@ -36,4 +36,6 @@ Route::prefix('admin')->group(function () {
 Route::name('frontend.')->group(function () {
     /*----------------- Home -----------------*/
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
+    Route::get('/login', [HomeController::class, 'login'])->name('home.login');
+    Route::get('/register', [HomeController::class, 'register'])->name('home.register');
 });
