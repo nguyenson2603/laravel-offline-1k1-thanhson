@@ -17,6 +17,7 @@
 <script src="{{ asset('frontend-theme/assets/js/bootstrap-notify.min.js') }}"></script>
 
 <!-- Theme js-->
+<script src="{{ asset('frontend-theme/assets/js/timer1.js') }}"></script>
 <script src="{{ asset('frontend-theme/assets/js/script.js') }}"></script>
 
 <script>

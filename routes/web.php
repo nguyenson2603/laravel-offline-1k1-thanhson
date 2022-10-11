@@ -38,4 +38,6 @@ Route::name('frontend.')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::get('/login', [HomeController::class, 'login'])->name('home.login');
     Route::get('/register', [HomeController::class, 'register'])->name('home.register');
+    Route::get('/cart', [HomeController::class, 'cart'])->name('home.cart');
+    Route::get('/checkout', [HomeController::class, 'checkout'])->name('home.checkout');
 });

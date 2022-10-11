@@ -44,7 +44,8 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
+                                    <a href="index.html"><img
+                                            src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
                                             class="img-fluid blur-up lazyload" alt=""></a>
                                 </div>
                             </div>
@@ -64,11 +65,13 @@
                                 <div class="top-header d-block">
                                     <ul class="header-dropdown">
                                         <li class="mobile-wishlist"><a href="#"><img
-                                                    src="{{ asset('frontend-theme/assets/images/icon/white-icon/heart.png') }}" alt="">
+                                                    src="{{ asset('frontend-theme/assets/images/icon/white-icon/heart.png') }}"
+                                                    alt="">
                                             </a></li>
                                         <li class="onhover-dropdown mobile-account">
                                             <a href="login.html">
-                                                <img src="{{ asset('frontend-theme/assets/images/icon/white-icon/user.png') }}" alt="">
+                                                <img src="{{ asset('frontend-theme/assets/images/icon/white-icon/user.png') }}"
+                                                    alt="">
                                             </a>
                                         </li>
                                     </ul>
@@ -77,17 +80,20 @@
                                     <div class="icon-nav d-none d-sm-block">
                                         <ul>
                                             <li class="onhover-div d-xl-none d-inline-block mobile-search">
-                                                <div><img src="{{ asset('frontend-theme/assets/images/icon/search.png') }}"
+                                                <div><img
+                                                        src="{{ asset('frontend-theme/assets/images/icon/search.png') }}"
                                                         class="img-fluid blur-up lazyload" alt=""> <i
                                                         class="ti-search"></i></div>
                                             </li>
                                             <li class="onhover-div mobile-setting">
-                                                <div><img src="{{ asset('frontend-theme/assets/images/icon/setting.png') }}"
+                                                <div><img
+                                                        src="{{ asset('frontend-theme/assets/images/icon/setting.png') }}"
                                                         class="img-fluid blur-up lazyload" alt=""> <i
                                                         class="ti-settings"></i></div>
                                             </li>
                                             <li class="onhover-div mobile-cart">
-                                                <div><img src="{{ asset('frontend-theme/assets/images/icon/cart.png') }}"
+                                                <div><img
+                                                        src="{{ asset('frontend-theme/assets/images/icon/cart.png') }}"
                                                         class="img-fluid blur-up lazyload" alt=""> <i
                                                         class="ti-shopping-cart"></i></div>
                                                 <span class="cart_qty_cls">2</span>
@@ -361,7 +367,8 @@
                                 </a>
                             </div>
                             <div class="brand-logo">
-                                <a href="index.html"><img src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
+                                <a href="index.html"><img
+                                        src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
                                         class="img-fluid blur-up lazyload" alt=""></a>
                             </div>
                         </div>
@@ -381,12 +388,14 @@
                             <div class="top-header d-block">
                                 <ul class="header-dropdown">
                                     <li class="mobile-wishlist"><a href="#"><img
-                                                src="{{ asset('frontend-theme/assets/images/icon/white-icon/heart.png') }}" alt="">
-                                            </a>
+                                                src="{{ asset('frontend-theme/assets/images/icon/white-icon/heart.png') }}"
+                                                alt="">
+                                        </a>
                                     </li>
                                     <li class="onhover-dropdown mobile-account">
                                         <a href="{{ route('frontend.home.login') }}">
-                                            <img src="{{ asset('frontend-theme/assets/images/icon/white-icon/user.png') }}" alt="">
+                                            <img src="{{ asset('frontend-theme/assets/images/icon/white-icon/user.png') }}"
+                                                alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -395,9 +404,11 @@
                                 <div class="icon-nav">
                                     <ul>
                                         <li class="onhover-div d-xl-none d-inline-block mobile-search">
-                                            <div><img src="{{ asset('frontend-theme/assets/images/icon/search.png') }}" onclick="openSearch()"
-                                                    class="img-fluid blur-up lazyload" alt=""> <i
-                                                    class="ti-search" onclick="openSearch()"></i></div>
+                                            <div><img
+                                                    src="{{ asset('frontend-theme/assets/images/icon/search.png') }}"
+                                                    onclick="openSearch()" class="img-fluid blur-up lazyload"
+                                                    alt=""> <i class="ti-search" onclick="openSearch()"></i>
+                                            </div>
                                             <div id="search-overlay" class="search-overlay">
                                                 <div> <span class="closebtn" onclick="closeSearch()"
                                                         title="Close Overlay">×</span>
@@ -424,7 +435,8 @@
                                             </div>
                                         </li>
                                         <li class="onhover-div mobile-setting">
-                                            <div><img src="{{ asset('frontend-theme/assets/images/icon/setting.png') }}"
+                                            <div><img
+                                                    src="{{ asset('frontend-theme/assets/images/icon/setting.png') }}"
                                                     class="img-fluid blur-up lazyload" alt=""> <i
                                                     class="ti-settings"></i></div>
                                             <div class="show-div setting">
@@ -482,8 +494,9 @@
                                                     </div>
                                                 </li>
                                                 <li>
-                                                    <div class="buttons"><a href="cart.html" class="view-cart">view
-                                                            cart</a> <a href="#" class="checkout">checkout</a>
+                                                    <div class="buttons">
+                                                        <a href="{{ route('frontend.home.cart') }}" class="view-cart">view cart</a>
+                                                        <a href="{{ route('frontend.home.checkout') }}" class="checkout">checkout</a>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -1029,8 +1042,8 @@
         <div class="slider-animate home-slider">
             <div>
                 <div class="home">
-                    <img src="{{ asset('frontend-theme/assets/images/marketplace/home-slider/2.jpg') }}" alt=""
-                        class="bg-img blur-up lazyload">
+                    <img src="{{ asset('frontend-theme/assets/images/marketplace/home-slider/2.jpg') }}"
+                        alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -1051,8 +1064,8 @@
             </div>
             <div>
                 <div class="home">
-                    <img src="{{ asset('frontend-theme/assets/images/marketplace/home-slider/1.jpg') }}" alt=""
-                        class="bg-img blur-up lazyload">
+                    <img src="{{ asset('frontend-theme/assets/images/marketplace/home-slider/1.jpg') }}"
+                        alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -1532,7 +1545,8 @@
                                             <div class="media">
                                                 <a href="product-page(no-sidebar).html"><img
                                                         class="img-fluid blur-up lazyload"
-                                                        src="{{ asset('frontend-theme/assets/images/pro2/43.jpg') }}" alt=""></a>
+                                                        src="{{ asset('frontend-theme/assets/images/pro2/43.jpg') }}"
+                                                        alt=""></a>
                                                 <div class="media-body align-self-center">
                                                     <div class="rating"><i class="fa fa-star"></i> <i
                                                             class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -1559,7 +1573,8 @@
                                             <div class="media">
                                                 <a href="product-page(no-sidebar).html"><img
                                                         class="img-fluid blur-up lazyload"
-                                                        src="{{ asset('frontend-theme/assets/images/pro2/21.jpg') }}" alt=""></a>
+                                                        src="{{ asset('frontend-theme/assets/images/pro2/21.jpg') }}"
+                                                        alt=""></a>
                                                 <div class="media-body align-self-center">
                                                     <div class="rating"><i class="fa fa-star"></i> <i
                                                             class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -1586,7 +1601,8 @@
                                             <div class="media">
                                                 <a href="product-page(no-sidebar).html"><img
                                                         class="img-fluid blur-up lazyload"
-                                                        src="{{ asset('frontend-theme/assets/images/pro2/44.jpg') }}" alt=""></a>
+                                                        src="{{ asset('frontend-theme/assets/images/pro2/44.jpg') }}"
+                                                        alt=""></a>
                                                 <div class="media-body align-self-center">
                                                     <div class="rating"><i class="fa fa-star"></i> <i
                                                             class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -2044,11 +2060,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/1.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/1.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2057,11 +2075,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/33.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/33.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2070,11 +2090,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/4.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/4.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2085,11 +2107,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/5.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/5.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2098,11 +2122,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/1-.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/1-.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2111,11 +2137,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/54.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/54.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2133,11 +2161,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/42.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/42.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2146,11 +2176,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/44.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/44.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2159,11 +2191,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/6.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/6.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2174,11 +2208,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/7.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/7.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2187,11 +2223,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/8.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/8.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2200,11 +2238,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/25.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/25.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2222,11 +2262,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/10.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/10.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2235,11 +2277,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/11.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/11.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2248,11 +2292,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/12.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/12.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2263,11 +2309,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/13.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/13.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2276,11 +2324,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/14.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/14.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2289,11 +2339,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/16.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/16.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2311,11 +2363,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/57.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/57.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2324,11 +2378,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/54.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/54.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2337,11 +2393,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/46.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/46.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2352,11 +2410,13 @@
                             <div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/53.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/53.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2365,11 +2425,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/78.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/78.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2378,11 +2440,13 @@
                                 </div>
                                 <div class="media">
                                     <a href="product-page(no-sidebar).html"><img class="img-fluid blur-up lazyload"
-                                            src="{{ asset('frontend-theme/assets/images/fashion/product/66.jpg') }}" alt=""></a>
+                                            src="{{ asset('frontend-theme/assets/images/fashion/product/66.jpg') }}"
+                                            alt=""></a>
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
+                                                class="fa fa-star"></i>
+                                        </div>
                                         <a href="product-page(no-sidebar).html">
                                             <h6>Slim Fit Cotton Shirt</h6>
                                         </a>
@@ -2914,7 +2978,9 @@
                             <h4>about</h4>
                         </div>
                         <div class="footer-contant">
-                            <div class="footer-logo"><img src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}" alt="">
+                            <div class="footer-logo"><img
+                                    src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
+                                    alt="">
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore</p>
@@ -3005,23 +3071,28 @@
                         <div class="payment-card-bottom">
                             <ul>
                                 <li>
-                                    <a href="#"><img src="{{ asset('frontend-theme/assets/images/icon/visa.png') }}"
+                                    <a href="#"><img
+                                            src="{{ asset('frontend-theme/assets/images/icon/visa.png') }}"
                                             alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="{{ asset('frontend-theme/assets/images/icon/mastercard.png') }}"
+                                    <a href="#"><img
+                                            src="{{ asset('frontend-theme/assets/images/icon/mastercard.png') }}"
                                             alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="{{ asset('frontend-theme/assets/images/icon/paypal.png') }}"
+                                    <a href="#"><img
+                                            src="{{ asset('frontend-theme/assets/images/icon/paypal.png') }}"
                                             alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="{{ asset('frontend-theme/assets/images/icon/american-express.png') }}"
+                                    <a href="#"><img
+                                            src="{{ asset('frontend-theme/assets/images/icon/american-express.png') }}"
                                             alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="{{ asset('frontend-theme/assets/images/icon/discover.png') }}"
+                                    <a href="#"><img
+                                            src="{{ asset('frontend-theme/assets/images/icon/discover.png') }}"
                                             alt=""></a>
                                 </li>
                             </ul>
@@ -3084,7 +3155,8 @@
                             aria-hidden="true">&times;</span></button>
                     <div class="row">
                         <div class="col-lg-6 col-xs-12">
-                            <div class="quick-view-img"><img src="{{ asset('frontend-theme/assets/images/pro3/1.jpg') }}" alt=""
+                            <div class="quick-view-img"><img
+                                    src="{{ asset('frontend-theme/assets/images/pro3/1.jpg') }}" alt=""
                                     class="img-fluid blur-up lazyload"></div>
                         </div>
                         <div class="col-lg-6 rtl-text">
@@ -3147,7 +3219,8 @@
                 <div class="setting-body">
                     <div class="setting-title">
                         <div>
-                            <img src="{{ asset('frontend-theme/assets/images/icon/logo.png') }}" class="img-fluid" alt="">
+                            <img src="{{ asset('frontend-theme/assets/images/icon/logo.png') }}" class="img-fluid"
+                                alt="">
                             <h3>50+ <span>demos</span> <br> suit for any type of online store.</h3>
                         </div>
                     </div>

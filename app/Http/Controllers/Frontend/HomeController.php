@@ -18,4 +18,12 @@ class HomeController extends Controller
     public function register(){
         return view('frontend.pages.register');
     }
+
+    public function cart(){
+        return view('frontend.pages.cart');
+    }
+
+    public function checkout(){
+        return view('frontend.pages.checkout');
+    }
 }
