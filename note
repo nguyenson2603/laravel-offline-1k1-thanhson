@@ -1,0 +1,14 @@
+dữ liệu demo
+- 20 category
+- 100 product
+- 10 slider
+
+sliders: id, name, description, link
+
+bổ sung thêm
+products: is_top_collection, is_trending, is_feature, is_best_seller, is_on_sale, sale
+
+
+đổ dữ liệu ra các trang: home, list (danh sách tất cả sản phẩm), detail
+
+nhúng CKEDITOR cho phần nhập content sản phẩm

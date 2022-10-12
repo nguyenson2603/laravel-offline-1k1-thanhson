@@ -7,23 +7,25 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public $viewPath = 'frontend.pages.home.';
+
     public function index(){
-        return view('frontend.app');
+        return view("{$this->viewPath}index");
     }
 
     public function login(){
-        return view('frontend.pages.login');
+        return view("{$this->viewPath}login");
     }
 
     public function register(){
-        return view('frontend.pages.register');
+        return view("{$this->viewPath}register");
     }
 
     public function cart(){
-        return view('frontend.pages.cart');
+        return view("{$this->viewPath}cart");
     }
 
     public function checkout(){
-        return view('frontend.pages.checkout');
+        return view("{$this->viewPath}checkout");
     }
 }
