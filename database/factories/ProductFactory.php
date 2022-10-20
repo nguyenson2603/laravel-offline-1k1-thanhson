@@ -22,7 +22,13 @@ class ProductFactory extends Factory
             'content' => $this->faker->sentence(10),
             // 'category_id' => $this->faker->numberBetween(1, 14),
             // 'category_id' => Category::factory(),
-            'category_id' => Category::inRandomOrder()->first()->id
+            'category_id' => Category::inRandomOrder()->first()->id,
+            'is_top_collection' => $this->faker->numberBetween(0, 1),
+            'is_trending' => $this->faker->numberBetween(0, 1),
+            'is_feature' => $this->faker->numberBetween(0, 1),
+            'is_best_seller' => $this->faker->numberBetween(0, 1),
+            'is_on_sale' => $this->faker->numberBetween(0, 1),
+            'sale' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

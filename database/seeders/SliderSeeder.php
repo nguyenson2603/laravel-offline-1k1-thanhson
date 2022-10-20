@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Slider;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class SliderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->count(20)->create();
+        Slider::factory()->count(10)->create();
     }
 }

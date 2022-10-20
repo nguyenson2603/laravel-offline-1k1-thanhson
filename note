@@ -12,3 +12,5 @@ products: is_top_collection, is_trending, is_feature, is_best_seller, is_on_sale
 đổ dữ liệu ra các trang: home, list (danh sách tất cả sản phẩm), detail
 
 nhúng CKEDITOR cho phần nhập content sản phẩm
+number_format($item['price']) . ' VNĐ'
+{{ number_format($item['price'] * ((100 - $item['sale']) / 100)) . ' VNĐ' }}

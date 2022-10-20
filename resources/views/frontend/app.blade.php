@@ -8,7 +8,7 @@
     @include('frontend.elements.header')
     <!-- header end -->
 
-    @yield('content');
+    @yield('content')
 
     <!-- footer section start -->
     @include('frontend.elements.footer')

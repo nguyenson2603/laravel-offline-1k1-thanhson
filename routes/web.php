@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
-// use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,4 +41,6 @@ Route::name('frontend.')->group(function () {
     Route::get('/register', [HomeController::class, 'register'])->name('home.register');
     Route::get('/cart', [HomeController::class, 'cart'])->name('home.cart');
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('home.checkout');
+    Route::get('/products', [FrontendProductController::class, 'index'])->name('home.products');
+    Route::get('/products/detail/{id}', [FrontendProductController::class, 'detail'])->name('home.products.detail');
 });

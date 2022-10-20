@@ -16,90 +16,42 @@
             <div class="row">
                 <div class="col-12">
                     <div class="slide-3 no-arrow slick-default-margin full-box">
-                        <div class="theme-card center-align">
-                            <div class="offer-slider">
-                                <div class="sec-1">
-                                    <div class="product-box2">
-                                        <div class="media">
-                                            <a href="product-page(no-sidebar).html"><img
-                                                    class="img-fluid blur-up lazyload"
-                                                    src="{{ asset('frontend-theme/assets/images/pro2/43.jpg') }}"
-                                                    alt=""></a>
-                                            <div class="media-body align-self-center">
-                                                <div class="rating"><i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                                <a href="product-page(no-sidebar).html">
-                                                    <h6>Slim Fit Cotton Shirt</h6>
-                                                </a>
-                                                <h4>$500.00 <del>$600.00</del></h4>
-                                                <ul class="color-variant">
-                                                    <li class="bg-light0"></li>
-                                                    <li class="bg-light1"></li>
-                                                    <li class="bg-light2"></li>
-                                                </ul>
+                        @if (count($params['is_top_collection']) > 0)
+                            @foreach ($params['is_top_collection'] as $item)
+                                <div class="theme-card center-align">
+                                    <div class="offer-slider">
+                                        <div class="sec-1">
+                                            <div class="product-box2">
+                                                <div class="media">
+                                                    <a href="product-page(no-sidebar).html"><img
+                                                            class="img-fluid blur-up lazyload"
+                                                            src="{{ asset('frontend-theme/assets/images/pro2/43.jpg') }}"
+                                                            alt=""></a>
+                                                    <div class="media-body align-self-center">
+                                                        <div class="rating"><i class="fa fa-star"></i> <i
+                                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                                class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                                        <a href="product-page(no-sidebar).html">
+                                                            <h6>{{ $item['name'] }}</h6>
+                                                        </a>
+                                                        {{-- <h4>$500.00 <del>$600.00</del></h4> --}}
+                                                        <h4>{{ number_format($item['price'] * ((100 - $item['sale']) / 100)) . ' VNĐ' }}
+                                                            <del>{{ number_format($item['price']) }}</del></h4>
+                                                        <ul class="color-variant">
+                                                            <li class="bg-light0"></li>
+                                                            <li class="bg-light1"></li>
+                                                            <li class="bg-light2"></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="theme-card center-align">
-                            <div class="offer-slider">
-                                <div class="sec-1">
-                                    <div class="product-box2">
-                                        <div class="media">
-                                            <a href="product-page(no-sidebar).html"><img
-                                                    class="img-fluid blur-up lazyload"
-                                                    src="{{ asset('frontend-theme/assets/images/pro2/21.jpg') }}"
-                                                    alt=""></a>
-                                            <div class="media-body align-self-center">
-                                                <div class="rating"><i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                                <a href="product-page(no-sidebar).html">
-                                                    <h6>Slim Fit Cotton Shirt</h6>
-                                                </a>
-                                                <h4>$500.00 <del>$600.00</del></h4>
-                                                <ul class="color-variant">
-                                                    <li class="bg-light0"></li>
-                                                    <li class="bg-light1"></li>
-                                                    <li class="bg-light2"></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="theme-card center-align">
-                            <div class="offer-slider">
-                                <div class="sec-1">
-                                    <div class="product-box2">
-                                        <div class="media">
-                                            <a href="product-page(no-sidebar).html"><img
-                                                    class="img-fluid blur-up lazyload"
-                                                    src="{{ asset('frontend-theme/assets/images/pro2/44.jpg') }}"
-                                                    alt=""></a>
-                                            <div class="media-body align-self-center">
-                                                <div class="rating"><i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                        class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                                <a href="product-page(no-sidebar).html">
-                                                    <h6>Slim Fit Cotton Shirt</h6>
-                                                </a>
-                                                <h4>$500.00 <del>$600.00</del></h4>
-                                                <ul class="color-variant">
-                                                    <li class="bg-light0"></li>
-                                                    <li class="bg-light1"></li>
-                                                    <li class="bg-light2"></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @else
+                            <h1 class="text-center">Dữ liệu đang được cập nhật!!</h1>
+                        @endif
                     </div>
                 </div>
             </div>

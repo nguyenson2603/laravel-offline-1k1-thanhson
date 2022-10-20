@@ -16,10 +16,11 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
-
+    //is_top_collection, is_trending, is_feature, is_best_seller, is_on_sale, sale
     /**
      * Reverse the migrations.
      *

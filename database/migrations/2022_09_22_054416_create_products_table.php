@@ -21,6 +21,12 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->string('content');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->boolean('is_top_collection');
+            $table->boolean('is_trending');
+            $table->boolean('is_feature');
+            $table->boolean('is_best_seller');
+            $table->boolean('is_on_sale');
+            $table->integer('sale');
             $table->timestamps();
         });
     }
