@@ -39,7 +39,11 @@ class Product extends Model
 
     public function getPriceFormattedAttribute()
     {
-        return number_format($this->price) . ' vnđ';
+        return number_format($this->price) . ' đ';
+    }
+
+    public function getSalePriceAttribute() {
+        return number_format($this->price * ((100 - $this->sale) / 100)) . ' đ';
     }
 
     public function category()
@@ -57,16 +61,27 @@ class Product extends Model
 
     public function homeList($type = null, $limit = 6)
     {
+        $result = null;
+        $query = self::select('id', 'name', 'price', 'status', 'description', 'content', 'category_id', 'sale')->active();
+
         if ($type == 'new_products') {
-            $query = self::select('id', 'name', 'price', 'status', 'description', 'content', 'category_id', 'sale')->where('status', 1);
-            $result = $query->latest()->limit($limit)->get()->toArray();
         } else if ($type == 'big_savings') {
-            $query = self::select('id', 'name', 'price', 'status', 'description', 'content', 'category_id', 'sale')->where('status', 1)->orderByRaw('sale DESC');
-            $result = $query->latest()->limit($limit)->get()->toArray();
+            $query->latest('sale');
         } else {
-            $query = self::select('id', 'name', 'price', 'status', 'description', 'content', 'category_id', 'sale', $type)->where($type, 1)->where('status', 1);
-            $result = $query->latest()->limit($limit)->get()->toArray();
+            $query->where($type, 1);
         }
+
+        $result = $query->latest()->limit($limit)->get();
         return $result;
+    }
+
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
+    }
+
+    public function scopeInActive($query)
+    {
+        $query->where('status', 0);
     }
 }

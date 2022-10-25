@@ -14,3 +14,9 @@ products: is_top_collection, is_trending, is_feature, is_best_seller, is_on_sale
 nhúng CKEDITOR cho phần nhập content sản phẩm
 number_format($item['price']) . ' VNĐ'
 {{ number_format($item['price'] * ((100 - $item['sale']) / 100)) . ' VNĐ' }}
+
+
+Hoàn thành 100% khóa online
+Giải thuật menu đa cấp: chương 14 khóa PHP
+CKEDITOR: Chương 15 - Bài 4 - Khóa PHP
+Hoàn thiện toàn bộ phần admin

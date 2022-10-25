@@ -10,18 +10,18 @@ class Slider extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'link', 'status'];
-    // public $oke;
-
-    // public function __construct()
-    // {
-    //     $this->oke = 123;
-    // }
+    public $oke = 'abc';
 
     public function getList()
     {
-        // $oke = $this->oke;
-        $query = self::select('id', 'name', 'description', 'link', 'status')->where('status', 1);
-        $result = $query->latest()->get()->toArray();
+        $query = $this->select('id', 'name', 'description', 'link', 'status')->active();
+        $result = $query->latest()->get();
         return $result;
+    }
+
+    // local scope -> global scope
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
     }
 }
