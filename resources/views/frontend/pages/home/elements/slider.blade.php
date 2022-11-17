@@ -11,11 +11,11 @@
                                 <div class="col">
                                     <div class="slider-contain">
                                         <div>
-                                            <h4 class="animated" data-animation-in="fadeInUp">{{ $item['name'] }}</h4>
+                                            <h4 class="animated" data-animation-in="fadeInUp">{{ $item->name }}</h4>
                                             <h1 class="animated font-fraunces" data-animation-in="fadeInUp"
                                                 data-delay-in="0.3">
-                                                {{ $item['description'] }}
-                                            </h1><a href="{{ $item['link'] }}" class="btn btn-solid animated"
+                                                {{ $item->description }}
+                                            </h1><a href="{{ $item->link }}" class="btn btn-solid animated"
                                                 data-animation-in="fadeInUp" data-delay-in="0.5">shop
                                                 now</a>
                                         </div>
