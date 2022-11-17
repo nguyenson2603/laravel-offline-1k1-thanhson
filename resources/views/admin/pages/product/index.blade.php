@@ -1,11 +1,12 @@
 @extends('admin.app')
 @php
-use App\Helpers\Template;
-use App\Helpers\Highlight;
+    use App\Helpers\Template;
+    use App\Helpers\Highlight;
 @endphp
 @section('content')
-    <div class="card">
-        <div class="card-header ">
+    @include('admin.elements.page-header', ['title' => ucfirst($model)])
+    <div class="card bg-gradient-white">
+        <div class="card-body" style="display: block;">
             <div class="d-flex justify-content-between align-items-center">
                 <x-admin.filter-status-product currentStatus="{{ $params['filter-status'] }}" />
                 <form action="" method="GET">
@@ -31,11 +32,13 @@ use App\Helpers\Highlight;
                         </div>
                     </div>
                 </form>
-                <a href="{{ route('admin.products.create') }}" class="btn btn-success">Thêm mới</a>
+                <a href="{{ route("admin.{$model}.create") }}" class="btn btn-success">Thêm mới</a>
             </div>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body p-0">
+    </div>
+    <!-- /.card-header -->
+    <div class="card bg-gradient-white">
+        <div class="card-body p-0" style="display: block;">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -49,29 +52,26 @@ use App\Helpers\Highlight;
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($products) > 0)
-                        @foreach ($products as $product)
-                            @php
-                                $status = Template::showButtonStatus($product, ['task' => 'product']);
-                            @endphp
+                    @if (count($items) > 0)
+                        @foreach ($items as $item)
                             <tr>
-                                <td>{{ $product['id'] }}</td>
-                                <td width="20%">{!! Highlight::show($product->name, $params, 'name') !!}</td>
-                                <td>{!! Highlight::show($product->price, $params, 'price') !!}</td>
-                                <td>{!! Highlight::show($product->price_formatted, $params, 'price') !!}</td>
-                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $item['id'] }}</td>
+                                <td width="20%">{!! Highlight::show($item->name, $params, 'name') !!}</td>
+                                <td>{!! Highlight::show($item->price, $params, 'price') !!}</td>
+                                <td>{!! Highlight::show($item->price_formatted, $params, 'price') !!}</td>
+                                <td>{{ $item->category->name }}</td>
                                 <td class="text-center">
                                     @include('admin.components.button-status', [
-                                        'item' => $product,
+                                        'item' => $item,
                                         'model' => $model,
                                     ])
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.products.destroy', ['product' => $product]) }}"
+                                    <form action="{{ route("admin.{$model}.destroy", ['product' => $item]) }}"
                                         method="POST" class="form-delete">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('admin.products.edit', ['product' => $product]) }}"
+                                        <a href="{{ route("admin.{$model}.edit", ['product' => $item]) }}"
                                             class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <button type="button" class="btn btn-dark btn-delete"><i
                                                 class="fas fa-trash"></i></button>
@@ -90,10 +90,12 @@ use App\Helpers\Highlight;
                 </tbody>
             </table>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            {!! $products->appends(request()->input())->links() !!}
-        </div>
-        <!-- /.card-footer -->
     </div>
+    <!-- /.card-body -->
+    <div class="card bg-gradient-white">
+        <div class="card-body" style="display: block;">
+            {!! $items->appends(request()->input())->links() !!}
+        </div>
+    </div>
+    <!-- /.card-footer -->
 @endsection

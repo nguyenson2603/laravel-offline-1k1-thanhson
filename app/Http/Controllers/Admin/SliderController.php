@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Slider as Model;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category\StoreRequest;
-use App\Http\Requests\Category\UpdateRequest;
 use Illuminate\Support\Facades\View;
+use App\Http\Requests\Slider\StoreRequest;
+use App\Http\Requests\Slider\UpdateRequest;
 
-class CategoryController extends Controller
+class SliderController extends Controller
 {
     public function __construct()
     {
-        $this->model = new Category();
-        View::share('model', 'categories');
+        $this->model = new Model();
+        $this->controllerName = 'slider';
+        $this->routeName = 'sliders';
+        View::share('model', 'sliders');
     }
     /**
      * Display a listing of the resource.
@@ -25,7 +27,7 @@ class CategoryController extends Controller
     {
         $items = $this->model->getList($request->all());
         $params = $request;
-        return view('admin.pages.category.index', compact('items', 'params'));
+        return view("admin.pages.{$this->controllerName}.index", compact('items', 'params'));
     }
 
     /**
@@ -35,7 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.category.create');
+        return view("admin.pages.{$this->controllerName}.create");
     }
 
     /**
@@ -46,8 +48,8 @@ class CategoryController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Category::create($request->all());
-        return redirect()->route('admin.categories.index');
+        Model::create($request->all());
+        return redirect()->route("admin.{$this->routeName}.index");
     }
 
     /**
@@ -56,9 +58,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        dd($category);
+        //
     }
 
     /**
@@ -67,9 +69,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Model $slider)
     {
-        return view('admin.pages.category.edit', compact('category'));
+        return view("admin.pages.{$this->controllerName}.edit", compact('slider'));
     }
 
     /**
@@ -79,13 +81,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, Category $category)
+    public function update(UpdateRequest $request, Model $slider)
     {
-        Category::where('id', $category->id)->update([
+        Model::where('id', $slider->id)->update([
             'name' => $request->name,
             'status' => $request->status,
         ]);
-        return redirect()->route('admin.categories.index');
+        return redirect()->route("admin.{$this->routeName}.index");
     }
 
     /**
@@ -94,17 +96,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Model $slider)
     {
-        $category->delete();
-        return redirect()->route('admin.categories.index');
+        $id = $slider->id;
+        $status = ($slider->status == 1) ? 0 : 1;
+        Model::where('id', $id)->update(['status' => $status]);
+        return redirect()->route("admin.{$this->routeName}.index");
     }
 
-    public function status(Category $category)
+    public function status(Model $slider)
     {
-        $id = $category->id;
-        $status = ($category->status == 1) ? 0 : 1;
-        Category::where('id', $id)->update(['status' => $status]);
-        return redirect()->route('admin.categories.index');
+        $id = $slider->id;
+        $status = ($slider->status == 1) ? 0 : 1;
+        Model::where('id', $id)->update(['status' => $status]);
+        return redirect()->route("admin.{$this->routeName}.index");
     }
 }

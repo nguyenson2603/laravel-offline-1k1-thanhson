@@ -11,7 +11,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @include('admin.elements.navbar')
         @include('admin.elements.sidebar')
         <div class="content-wrapper">
-            @include('admin.elements.page-header')
             <div class="content">
                 <div class="container-fluid">
                     @yield('content')

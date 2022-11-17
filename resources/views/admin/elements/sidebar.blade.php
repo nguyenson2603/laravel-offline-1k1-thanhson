@@ -18,6 +18,12 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                        <i class="far fa-circle"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.categories.index') }}" class="nav-link">
                         <i class="far fa-circle"></i>
                         <p>Categories</p>
@@ -27,6 +33,12 @@
                     <a href="{{ route('admin.products.index') }}" class="nav-link">
                         <i class="far fa-circle"></i>
                         <p>Products</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.sliders.index') }}" class="nav-link">
+                        <i class="far fa-circle"></i>
+                        <p>Slider</p>
                     </a>
                 </li>
             </ul>

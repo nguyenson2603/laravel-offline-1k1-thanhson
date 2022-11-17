@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
 use Illuminate\Support\Facades\Route;
@@ -25,12 +27,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->group(function () {
+        /*----------------- Dashboard -----------------*/
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         /*----------------- Product -----------------*/
         Route::get('/products/change-status/{product}', [ProductController::class, 'status'])->name('products.status');
         Route::resource('products', ProductController::class);
         /*----------------- Category -----------------*/
         Route::get('/categories/change-status/{category}', [CategoryController::class, 'status'])->name('categories.status');
         Route::resource('categories', CategoryController::class);
+        /*----------------- Slider -----------------*/
+        Route::get('/sliders/change-status/{slider}', [SliderController::class, 'status'])->name('sliders.status');
+        Route::resource('sliders', SliderController::class);
     });
 });
 

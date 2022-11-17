@@ -24,9 +24,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->model->getList($request->all());
+        $items = $this->model->getList($request->all());
         $params = $request;
-        return view('admin.pages.product.index', compact('products', 'params'));
+        return view('admin.pages.product.index', compact('items', 'params'));
     }
 
     /**

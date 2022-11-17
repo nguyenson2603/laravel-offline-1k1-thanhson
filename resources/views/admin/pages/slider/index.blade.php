@@ -8,7 +8,7 @@
     <div class="card bg-gradient-white">
         <div class="card-body" style="display: block;">
             <div class="d-flex justify-content-between align-items-center">
-                <x-admin.filter-status-category currentStatus="{{ $params['filter-status'] }}" />
+                <x-admin.filter-status-slider currentStatus="{{ $params['filter-status'] }}" />
                 <form action="" method="GET">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -37,11 +37,16 @@
     <!-- /.card-header -->
     <div class="card bg-gradient-white">
         <div class="card-body p-0" style="display: block;">
+            {{-- @php
+                dd($items);
+            @endphp --}}
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th style="width: 15px">ID</th>
                         <th>Name</th>
+                        <th>Description</th>
+                        <th>Link</th>
                         <th class="text-center">Status</th>
                         <th>Action</th>
                     </tr>
@@ -52,6 +57,8 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{!! Highlight::show($item->name, $params, 'name') !!}</td>
+                                <td style="width: 400px">{{ $item->description }}</td>
+                                <td>{{ $item->link }}</td>
                                 <td class="text-center">
                                     @include('admin.components.button-status', [
                                         'item' => $item,
@@ -59,11 +66,11 @@
                                     ])
                                 </td>
                                 <td>
-                                    <form action="{{ route("admin.{$model}.destroy", ['category' => $item]) }}"
+                                    <form action="{{ route("admin.{$model}.destroy", ['slider' => $item]) }}"
                                         method="POST" class="form-delete form-{{ $item->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route("admin.{$model}.edit", ['category' => $item]) }}"
+                                        <a href="{{ route("admin.{$model}.edit", ['slider' => $item]) }}"
                                             class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <button type="button" class="btn btn-dark btn-delete"><i
                                                 class="fas fa-trash"></i></button>

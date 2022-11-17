@@ -36,11 +36,6 @@ class Category extends Model
         return $result;
     }
 
-    public function getProductListAttribute()
-    {
-        return $this->products->implode('name', '<br>');
-    }
-
     public function categories()
     {
         return self::with('products')->select('id', 'name')->where('status', '1')->latest()->get()->toArray();
