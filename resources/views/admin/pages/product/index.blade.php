@@ -45,7 +45,6 @@
                         <th width="15px">ID</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>Price Formatted</th>
                         <th>Category</th>
                         <th class="text-center">Status</th>
                         <th>Action</th>
@@ -57,7 +56,6 @@
                             <tr>
                                 <td>{{ $item['id'] }}</td>
                                 <td width="20%">{!! Highlight::show($item->name, $params, 'name') !!}</td>
-                                <td>{!! Highlight::show($item->price, $params, 'price') !!}</td>
                                 <td>{!! Highlight::show($item->price_formatted, $params, 'price') !!}</td>
                                 <td>{{ $item->category->name }}</td>
                                 <td class="text-center">
