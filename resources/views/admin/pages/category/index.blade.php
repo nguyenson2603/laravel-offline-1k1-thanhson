@@ -7,30 +7,9 @@
     @include('admin.elements.page-header', ['title' => ucfirst($model)])
     <div class="card bg-gradient-white">
         <div class="card-body" style="display: block;">
-            <div class="d-flex justify-content-between align-items-center">
-                <x-admin.filter-status-category currentStatus="{{ $params['filter-status'] }}" />
-                <form action="" method="GET">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                                aria-expanded="false" id="input-group-prepend">
-                                {{ request()->get('filter') != '' ? request()->get('filter') : 'all' }}
-                            </button>
-                            <div class="dropdown-menu">
-                                <button class="dropdown-item btn-click" data-value="name">Name</button>
-                            </div>
-                        </div>
-                        <input type="hidden" name="filter" class="data-field" value="{{ request()->get('filter') }}">
-                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Search..."
-                            value="{{ request()->get('search') }}">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-lg btn-default">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <a href="{{ route("admin.{$model}.create") }}" class="btn btn-success">Thêm mới</a>
+            <div class="text-right">
+                <a href="{{ route("admin.{$model}.create") }}" class="btn btn-success btn-block btn-lg font-weight-bold">Thêm
+                    mới</a>
             </div>
         </div>
     </div>
@@ -42,6 +21,7 @@
                     <tr>
                         <th style="width: 15px">ID</th>
                         <th>Name</th>
+                        <th class="text-center">Move</th>
                         <th class="text-center">Status</th>
                         <th>Action</th>
                     </tr>
@@ -51,7 +31,17 @@
                         @foreach ($items as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{!! Highlight::show($item->name, $params, 'name') !!}</td>
+                                <td>{{ $item->nameWithDepth }}</td>
+                                <td class="text-center">
+                                    @if ($item->getNextSibling() != null)
+                                        <a href="{{ route('admin.categories.move', ['category' => $item, 'action' => 'down']) }}" class="btn btn-info"><i
+                                                class="fas fa-arrow-down"></i></a>
+                                    @endif
+                                    @if ($item->getPrevSibling() != null)
+                                        <a href="{{ route('admin.categories.move', ['category' => $item, 'action' => 'up']) }}" class="btn btn-info"><i
+                                                class="fas fa-arrow-up"></i></a>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     @include('admin.components.button-status', [
                                         'item' => $item,
@@ -81,10 +71,4 @@
         </div>
     </div>
     <!-- /.card-body -->
-    <div class="card bg-gradient-white">
-        <div class="card-body" style="display: block;">
-            {!! $items->appends(request()->input())->links() !!}
-        </div>
-    </div>
-    <!-- /.card-footer -->
 @endsection

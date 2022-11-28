@@ -10,7 +10,7 @@
         </div>
     @endif
     <div class="card">
-        <div class="card-header ">
+        <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">Thêm mới</h4>
                 <a href="{{ route("admin.{$model}.index") }}" class="btn btn-warning">Quay lại</a>
@@ -26,8 +26,16 @@
                         <input type="text" class="form-control" name="name">
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputEmail1">Parents</label>
+                        <select name="parent_id" id="parent_id" class="form-control">
+                            @foreach ($parents as $item)
+                                <option value="{{ $item->id }}">{{ $item->name_with_depth }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputEmail1">Status</label>
-                        <x-admin.select-status name="status" key-selected="default" />
+                        <x-admin.select-status name="status" key-selected="1" />
                     </div>
                 </div>
                 <!-- /.card-body -->

@@ -34,6 +34,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('products', ProductController::class);
         /*----------------- Category -----------------*/
         Route::get('/categories/change-status/{category}', [CategoryController::class, 'status'])->name('categories.status');
+        Route::get('/categories/move/{category}-{action}', [CategoryController::class, 'move'])->name('categories.move');
         Route::resource('categories', CategoryController::class);
         /*----------------- Slider -----------------*/
         Route::get('/sliders/change-status/{slider}', [SliderController::class, 'status'])->name('sliders.status');

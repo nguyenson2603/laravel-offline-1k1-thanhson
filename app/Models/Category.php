@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Category extends Model
 {
     use HasFactory;
+    use NodeTrait;
 
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'status', 'parent_id'];
     protected $searchAccepted = ['name'];
 
     public function getList($params = null)
@@ -34,6 +36,11 @@ class Category extends Model
         $result = $query->latest('id')->paginate(5);
 
         return $result;
+    }
+
+    public function getNameWithDepthAttribute()
+    {
+        return str_repeat("--|--", $this->depth) . $this->name;
     }
 
     public function categories()

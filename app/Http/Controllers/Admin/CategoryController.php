@@ -23,7 +23,8 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $items = $this->model->getList($request->all());
+        // $items = $this->model->getList($request->all());
+        $items = Category::defaultOrder()->withDepth()->having('depth', '>', 0)->get();
         $params = $request;
         return view('admin.pages.category.index', compact('items', 'params'));
     }
@@ -35,7 +36,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.category.create');
+        $parents = Category::defaultOrder()->withDepth()->get();
+        return view('admin.pages.category.create', compact('parents'));
     }
 
     /**
@@ -69,7 +71,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.pages.category.edit', compact('category'));
+        $parents = Category::defaultOrder()->withDepth()->where('_lft', '<', $category->_lft)->orWhere('_rgt', '>', $category->_rgt)->get();
+        return view('admin.pages.category.edit', compact('category', 'parents'));
     }
 
     /**
@@ -81,10 +84,14 @@ class CategoryController extends Controller
      */
     public function update(UpdateRequest $request, Category $category)
     {
-        Category::where('id', $category->id)->update([
-            'name' => $request->name,
-            'status' => $request->status,
-        ]);
+        // Category::where('id', $category->id)->update([
+        //     'name' => $request->name,
+        //     'status' => $request->status,
+        // ]);
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->parent_id = $request->parent_id;
+        $category->save();
         return redirect()->route('admin.categories.index');
     }
 
@@ -105,6 +112,15 @@ class CategoryController extends Controller
         $id = $category->id;
         $status = ($category->status == 1) ? 0 : 1;
         Category::where('id', $id)->update(['status' => $status]);
+        return redirect()->route('admin.categories.index');
+    }
+
+    public function move(Category $category, $action){
+        if($action == 'up'){
+            $category->up();
+        }else{
+            $category->down();
+        }
         return redirect()->route('admin.categories.index');
     }
 }
