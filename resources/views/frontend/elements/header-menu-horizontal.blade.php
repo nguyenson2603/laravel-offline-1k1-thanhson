@@ -10,7 +10,7 @@
                 <li>
                     <a href="#">product</a>
                     <ul>
-                        <li><a href="product-page(360-view).html">360 view <span class="new-tag">new</span></a></li>
+                        {{-- <li><a href="product-page(360-view).html">360 view <span class="new-tag">new</span></a></li>
                         <li>
                             <a href="#">sidebar</a>
                             <ul>
@@ -21,8 +21,10 @@
                                 <li><a href="product-page(no-sidebar).html">no sidebar</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li><a href="product-page(4-image).html">four image</a></li>
+                        </li> --}}
+                        @foreach ($categories as $item)
+                            <li><a href="{{ route('frontend.home.category', [$item->name, $item->id]) }}">{{ $item->nameWithDepth }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
                 <li><a href="#">pages</a>

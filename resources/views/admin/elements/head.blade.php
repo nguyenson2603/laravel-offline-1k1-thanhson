@@ -10,4 +10,9 @@
     <link rel="stylesheet" href="{{ asset('admin-theme/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin-theme/css/adminlte.min.css') }}">
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 200px;
+        }
+    </style>
 </head>

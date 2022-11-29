@@ -1,6 +1,6 @@
 @extends('frontend.app')
 @section('content')
-    @include('frontend.partials.breadcrumb')
+    @include('frontend.partials.breadcrumb', ['name' => 'checkout'])
     <section class="section-b-space">
         <div class="container">
             <div class="checkout-page">

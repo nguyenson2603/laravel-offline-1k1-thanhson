@@ -1,6 +1,6 @@
 @extends('frontend.app')
 @section('content')
-    @include('frontend.partials.breadcrumb')
+    @include('frontend.partials.breadcrumb', ['name' => 'login'])
     <!--section start-->
     <section class="login-page section-b-space">
         <div class="container">

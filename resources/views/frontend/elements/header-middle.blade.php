@@ -11,7 +11,7 @@
                         </a>
                     </div>
                     <div class="brand-logo">
-                        <a href="index.html"><img src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
+                        <a href="{{ route('frontend.home.index') }}"><img src="{{ asset('frontend-theme/assets/images/icon/logo/f11.png') }}"
                                 class="img-fluid blur-up lazyload" alt=""></a>
                     </div>
                 </div>

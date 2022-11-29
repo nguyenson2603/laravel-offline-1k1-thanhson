@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Models\Slider;
-use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Category;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
     public $viewPath = 'frontend.pages.home.';
+    public function __construct()
+    {
+        $categories = Category::defaultOrder()->withDepth()->having('depth', '>', 0)->get();
+        View::share('categories', $categories);
+    }
 
     public function index()
     {
@@ -46,5 +52,13 @@ class HomeController extends Controller
     public function checkout()
     {
         return view("{$this->viewPath}checkout");
+    }
+
+    public function category($name, $id)
+    {
+        $product = new Product();
+        $newProducts = $product->homeList('new_products', 6)->chunk(3);
+        $productsOfCategory = $product->homeList('product_of_category', 12, $id);
+        return view("{$this->viewPath}category", compact('name', 'id', 'newProducts', 'productsOfCategory'));
     }
 }

@@ -1,7 +1,6 @@
 @extends('frontend.app')
-
 @section('content')
-    @include('frontend.partials.breadcrumb', ['name' => 'products'])
+    @include('frontend.partials.breadcrumb', ['name' => $name])
     <section class="section-b-space ratio_asos">
         <div class="collection-wrapper">
             <div class="container">
@@ -161,15 +160,6 @@
                                                 src="{{ asset('frontend-theme/assets/images/mega-menu/2.jpg') }}"
                                                 class="img-fluid blur-up lazyloaded" alt=""></a>
                                         <div class="top-banner-content small-section">
-                                            <h4>BIGGEST DEALS ON TOP BRANDS</h4>
-                                            <p>The trick to choosing the best wear for yourself is to keep in mind your
-                                                body type, individual style, occasion and also the time of day or
-                                                weather.
-                                                In addition to eye-catching products from top brands, we also offer an
-                                                easy 30-day return and exchange policy, free and fast shipping across
-                                                all pin codes, cash or card on delivery option, deals and discounts,
-                                                among other perks. So, sign up now and shop for westarn wear to your
-                                                heart’s content on Multikart. </p>
                                         </div>
                                     </div>
                                     <div class="collection-product-wrapper">
@@ -195,14 +185,14 @@
                                                         </div>
                                                         <div class="collection-grid-view">
                                                             <ul>
-                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/2.png') }}" alt=""
-                                                                        class="product-2-layout-view"></li>
-                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/3.png') }}" alt=""
-                                                                        class="product-3-layout-view"></li>
-                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/4.png') }}" alt=""
-                                                                        class="product-4-layout-view"></li>
-                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/6.png') }}" alt=""
-                                                                        class="product-6-layout-view"></li>
+                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/2.png') }}"
+                                                                        alt="" class="product-2-layout-view"></li>
+                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/3.png') }}"
+                                                                        alt="" class="product-3-layout-view"></li>
+                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/4.png') }}"
+                                                                        alt="" class="product-4-layout-view"></li>
+                                                                <li><img src="{{ asset('frontend-theme/assets/images/icon/6.png') }}"
+                                                                        alt="" class="product-6-layout-view"></li>
                                                             </ul>
                                                         </div>
                                                         <div class="product-page-per-view">
@@ -228,69 +218,14 @@
                                         </div>
                                         <div class="product-wrapper-grid">
                                             <div class="row margin-res">
-                                                @if (count($products) > 0)
-                                                    @foreach ($products as $item)
-                                                        <div class="col-xl-3 col-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="{{ route('frontend.home.products.detail', $item->id) }}"
-                                                                            class="bg-size blur-up lazyloaded"
-                                                                            style="background-image: url(&quot;{{ asset('frontend-theme/assets/images/pro3/35.jpg') }}&quot;); background-size: cover; background-position: center center; display: block;"><img
-                                                                                src="{{ asset('frontend-theme/assets/images/pro3/35.jpg') }}"
-                                                                                class="img-fluid blur-up bg-img lazyloaded"
-                                                                                alt="" style="display: none;"></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-bs-toggle="modal"
-                                                                            data-bs-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)"
-                                                                            title="Add to Wishlist"><i class="ti-heart"
-                                                                                aria-hidden="true"></i></a> <a
-                                                                            href="#" data-bs-toggle="modal"
-                                                                            data-bs-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a>
-                                                                        <a href="compare.html" title="Compare"><i
-                                                                                class="ti-reload"
-                                                                                aria-hidden="true"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div>
-                                                                        <div class="rating"><i class="fa fa-star"></i> <i
-                                                                                class="fa fa-star"></i> <i
-                                                                                class="fa fa-star"></i>
-                                                                            <i class="fa fa-star"></i> <i
-                                                                                class="fa fa-star"></i>
-                                                                        </div>
-                                                                        <a href="{{ route('frontend.home.products.detail', $item->id) }}">
-                                                                            <h6>{{ $item['name'] }}</h6>
-                                                                        </a>
-                                                                        <p>{{ $item['description'] }}</p>
-                                                                        <h4>{{ $item->priceSaleFormat . ' VNĐ' }}
-                                                                        </h4>
-                                                                        <ul class="color-variant">
-                                                                            <li class="bg-light0"></li>
-                                                                            <li class="bg-light1"></li>
-                                                                            <li class="bg-light2"></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                @endif
+                                                @include('frontend.pages.home.elements.products-of-category')
                                             </div>
                                         </div>
                                         <div class="product-pagination">
                                             <div class="theme-paggination-block">
                                                 <div class="row">
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
-                                                        {{-- <nav aria-label="Page navigation">
+                                                        <nav aria-label="Page navigation">
                                                             <ul class="pagination">
                                                                 <li class="page-item"><a class="page-link" href="#"
                                                                         aria-label="Previous"><span aria-hidden="true"><i
@@ -309,22 +244,15 @@
                                                                                 aria-hidden="true"></i></span> <span
                                                                             class="sr-only">Next</span></a></li>
                                                             </ul>
-                                                        </nav> --}}
-                                                        {!! $products->appends(request()->input())->links() !!}
+                                                        </nav>
                                                     </div>
                                                     <div class="col-xl-6 col-md-6 col-sm-12">
                                                         <div class="product-search-count-bottom">
-                                                            @php
-                                                                $lastPage = $products->lastPage();
-                                                                $totalItemsPerPage = $products->perPage();
-                                                                $currentPage = $products->currentPage();
-                                                            @endphp
-                                                            <h5>Showing Products {{ $currentPage }}-{{ $lastPage }} of {{ $totalItemsPerPage }} Result</h5>
+                                                            <h5>Showing Products 1-24 of 10 Result</h5>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>

@@ -50,5 +50,6 @@ Route::name('frontend.')->group(function () {
     Route::get('/cart', [HomeController::class, 'cart'])->name('home.cart');
     Route::get('/checkout', [HomeController::class, 'checkout'])->name('home.checkout');
     Route::get('/products', [FrontendProductController::class, 'index'])->name('home.products');
+    Route::get('/category/{name}-{id}', [HomeController::class, 'category'])->name('home.category');
     Route::get('/products/detail/{id}', [FrontendProductController::class, 'detail'])->name('home.products.detail');
 });

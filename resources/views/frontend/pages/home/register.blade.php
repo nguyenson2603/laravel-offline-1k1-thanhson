@@ -1,6 +1,6 @@
 @extends('frontend.app')
 @section('content')
-    @include('frontend.partials.breadcrumb')
+    @include('frontend.partials.breadcrumb', ['name' => 'register'])
 
     <!--section start-->
     <section class="register-page section-b-space">

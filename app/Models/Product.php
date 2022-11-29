@@ -59,12 +59,13 @@ class Product extends Model
         return $result;
     }
 
-    public function homeList($type = null, $limit = 6)
+    public function homeList($type = null, $limit = 6, $id = null)
     {
         $result = null;
         $query = self::select('id', 'name', 'price', 'status', 'description', 'content', 'category_id', 'sale')->active();
-
-        if ($type == 'new_products') {
+        if($type == 'product_of_category'){
+            $query->where('category_id', $id);
+        }else if ($type == 'new_products') {
         } else if ($type == 'big_savings') {
             $query->latest('sale');
         } else {
@@ -83,5 +84,15 @@ class Product extends Model
     public function scopeInActive($query)
     {
         $query->where('status', 0);
+    }
+
+    public function getPriceSaleFormatAttribute()
+    {
+        return number_format($this->price * ((100 - $this->sale) / 100));
+    }
+
+    public function getPriceFormatAttribute()
+    {
+        return number_format($this->price);
     }
 }

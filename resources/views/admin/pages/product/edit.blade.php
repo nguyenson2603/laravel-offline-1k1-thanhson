@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Content</label>
-                        <textarea name="content" cols="30" rows="3" class="form-control">
+                        <textarea name="content" cols="30" rows="3" class="form-control" id="editor">
                             {{ $product->content }}
                         </textarea>
                     </div>

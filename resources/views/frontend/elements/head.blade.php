@@ -28,6 +28,9 @@
     <!-- Animate icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend-theme/assets/css/vendors/animate.css') }}">
 
+    <!-- Price range -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend-theme/assets/css/vendors/price-range.css') }}">
+
     <!-- Themify icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend-theme/assets/css/vendors/themify-icons.css') }}">
 
