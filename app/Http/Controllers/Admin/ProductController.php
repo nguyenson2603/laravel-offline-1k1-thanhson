@@ -91,6 +91,12 @@ class ProductController extends Controller
             'content' => $request->content,
             'status' => $request->status,
             'category_id' => $request->category_id,
+            'is_top_collection' => $request->is_top_collection,
+            'is_trending' => $request->is_trending,
+            'is_feature' => $request->is_feature,
+            'is_best_seller' => $request->is_best_seller,
+            'is_on_sale' => $request->is_on_sale,
+            'sale' => $request->sale,
         ]);
         return redirect()->route('admin.products.index');
     }

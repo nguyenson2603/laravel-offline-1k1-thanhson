@@ -26,7 +26,7 @@
                                                     <a
                                                         href="{{ route('frontend.home.products.detail', ['id' => $item->id]) }}">
                                                         <img class="img-fluid blur-up lazyload"
-                                                            src="{{ asset('frontend-theme/assets/images/pro2/43.jpg') }}"
+                                                            src="{{ asset('frontend-theme/assets/images/pro2/1.jpg') }}"
                                                             alt="">
                                                     </a>
                                                     <div class="media-body align-self-center">

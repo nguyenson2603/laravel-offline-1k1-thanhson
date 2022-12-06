@@ -1,7 +1,7 @@
 <section class="pt-0 section-b-space">
     <div class="container">
         <div class="full-banner custom-space p-right text-end">
-            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/15.jpg') }}" alt=""
+            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/3.jpg') }}" alt=""
                 class="bg-img blur-up lazyload">
             <div class="container">
                 <div class="row">

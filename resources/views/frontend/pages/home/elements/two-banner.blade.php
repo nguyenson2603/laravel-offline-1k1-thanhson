@@ -5,7 +5,7 @@
                 <a href="#">
                     <div class="collection-banner p-right text-end">
                         <div class="img-part">
-                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/13.jpg') }}"
+                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/1.jpg') }}"
                                 class="img-fluid blur-up lazyload bg-img" alt="">
                         </div>
                         <div class="contain-banner">
@@ -21,7 +21,7 @@
                 <a href="#">
                     <div class="collection-banner p-right text-center">
                         <div class="img-part">
-                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/14.jpg') }}"
+                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/2.jpg') }}"
                                 class="img-fluid blur-up lazyload bg-img" alt="">
                         </div>
                         <div class="contain-banner">

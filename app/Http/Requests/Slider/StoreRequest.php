@@ -24,8 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'bail|required|min:5|unique:categories,name',
-            // 'status' => 'bail|in:0,1',
+            'name' => 'bail|required|min:5|unique:categories,name',
+            'description' => 'bail|required',
+            'link' => 'bail|url',
         ];
     }
 }

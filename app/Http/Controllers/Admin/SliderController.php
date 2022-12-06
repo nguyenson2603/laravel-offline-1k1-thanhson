@@ -85,6 +85,8 @@ class SliderController extends Controller
     {
         Model::where('id', $slider->id)->update([
             'name' => $request->name,
+            'description' => $request->description,
+            'link' => $request->link,
             'status' => $request->status,
         ]);
         return redirect()->route("admin.{$this->routeName}.index");
@@ -98,9 +100,7 @@ class SliderController extends Controller
      */
     public function destroy(Model $slider)
     {
-        $id = $slider->id;
-        $status = ($slider->status == 1) ? 0 : 1;
-        Model::where('id', $id)->update(['status' => $status]);
+        Model::destroy($slider->id);
         return redirect()->route("admin.{$this->routeName}.index");
     }
 

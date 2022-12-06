@@ -13,8 +13,8 @@
                             <div class="product-box product-wrap product-style-3">
                                 <div class="img-wrapper">
                                     <div class="front">
-                                        <a href="product-page(no-sidebar).html"><img alt=""
-                                                src="{{ asset('frontend-theme/assets/images/marketplace/pro/49.jpg') }}"
+                                        <a href="{{ route('frontend.home.products.detail', [$item->id]) }}"><img alt=""
+                                                src="{{ asset('frontend-theme/assets/images/marketplace/pro/51.jpg') }}"
                                                 class="img-fluid blur-up lazyload bg-img"></a>
                                     </div>
                                     <div class="cart-detail"><a href="javascript:void(0)" title="Add to Wishlist"><i
@@ -28,7 +28,7 @@
                                             class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                             class="fa fa-star"></i>
                                     </div>
-                                    <a href="product-page(no-sidebar).html">
+                                    <a href="{{ route('frontend.home.products.detail', [$item->id]) }}">
                                         <h6>{{ $item['name'] }}</h6>
                                     </a>
                                     <h4>{{ number_format($item['price'] * ((100 - $item['sale']) / 100)) }}</h4>

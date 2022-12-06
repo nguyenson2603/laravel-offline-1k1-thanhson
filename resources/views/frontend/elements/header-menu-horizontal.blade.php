@@ -8,7 +8,7 @@
                 </li>
                 <li><a href="index.html">Home</a></li>
                 <li>
-                    <a href="#">product</a>
+                    <a href="{{ route('frontend.home.products') }}">product</a>
                     <ul>
                         {{-- <li><a href="product-page(360-view).html">360 view <span class="new-tag">new</span></a></li>
                         <li>

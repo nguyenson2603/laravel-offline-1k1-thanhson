@@ -21,17 +21,25 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-            <form method="POST" action="{{ route('admin.categories.update', ['category' => $category]) }}">
+            <form method="POST" action="{{ route("admin.{$model}.update", ['slider' => $slider]) }}">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" name="name" value="{{ $category->name }}">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ $slider->name }}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Status</label>
-                        <x-admin.select-status name="status" key-selected="{{ $category->status }}" />
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" value="{{ $slider->description }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link</label>
+                        <input type="text" class="form-control" name="link" value="{{ $slider->link }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <x-admin.select-status name="status" key-selected="{{ $slider->status }}"/>
                     </div>
                 </div>
                 <!-- /.card-body -->

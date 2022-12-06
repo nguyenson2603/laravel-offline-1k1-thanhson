@@ -5,7 +5,7 @@
                 <a href="#">
                     <div class="collection-banner p-left">
                         <div class="img-part">
-                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/10.jpg') }}"
+                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/4.jpg') }}"
                                 class="img-fluid blur-up lazyload bg-img">
                         </div>
                         <div class="contain-banner banner-4">
@@ -21,7 +21,7 @@
                 <a href="#">
                     <div class="collection-banner p-left">
                         <div class="img-part">
-                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/9.jpg') }}"
+                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/5.jpg') }}"
                                 class="img-fluid blur-up lazyload bg-img">
                         </div>
                         <div class="contain-banner banner-4">
@@ -37,7 +37,7 @@
                 <a href="#">
                     <div class="collection-banner p-left">
                         <div class="img-part">
-                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/12.jpg') }}"
+                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/6.jpg') }}"
                                 class="img-fluid blur-up lazyload bg-img">
                         </div>
                         <div class="contain-banner banner-4">
@@ -53,7 +53,7 @@
                 <a href="#">
                     <div class="collection-banner p-left">
                         <div class="img-part">
-                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/11.jpg') }}"
+                            <img src="{{ asset('frontend-theme/assets/images/marketplace/banner/7.jpg') }}"
                                 class="img-fluid blur-up lazyload bg-img">
                         </div>
                         <div class="contain-banner banner-4">

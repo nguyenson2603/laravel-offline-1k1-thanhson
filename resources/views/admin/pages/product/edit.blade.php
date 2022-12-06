@@ -23,19 +23,19 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
+                        <label for="name">Name</label>
                         <input type="text" class="form-control" name="name" value="{{ $product->name }}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Price</label>
+                        <label for="price">Price</label>
                         <input type="number" class="form-control" name="price" value="{{ $product->price }}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Description</label>
+                        <label for="description">Description</label>
                         <input type="text" class="form-control" name="description" value="{{ $product->description }}">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Content</label>
+                        <label for="content">Content</label>
                         <textarea name="content" cols="30" rows="3" class="form-control" id="editor">
                             {{ $product->content }}
                         </textarea>
@@ -47,6 +47,30 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <x-admin.select-status name="status" key-selected="{{ $product->status }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="is_top_collection">Is Top Collection</label>
+                        <x-admin.select-status name="is_top_collection" key-selected="{{ $product->is_top_collection }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="is_trending">Is Trending</label>
+                        <x-admin.select-status name="is_trending" key-selected="{{ $product->is_trending }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="is_feature">Is Feature</label>
+                        <x-admin.select-status name="is_feature" key-selected="{{ $product->is_feature }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="is_best_seller">Is Best Seller</label>
+                        <x-admin.select-status name="is_best_seller" key-selected="{{ $product->is_best_seller }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="is_on_sale">Is On Sale</label>
+                        <x-admin.select-status name="is_on_sale" key-selected="{{ $product->is_on_sale }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="sale">Sale</label>
+                        <input type="number" class="form-control" name="sale" value="{{ $product->sale }}">
                     </div>
                 </div>
                 <!-- /.card-body -->

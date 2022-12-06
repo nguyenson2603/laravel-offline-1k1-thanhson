@@ -18,16 +18,24 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
-            <form method="POST" action="{{ route('admin.categories.store') }}">
+            <form method="POST" action="{{ route("admin.{$model}.store") }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
+                        <label for="name">Name</label>
                         <input type="text" class="form-control" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Status</label>
-                        <x-admin.select-status name="status" key-selected="default" />
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link</label>
+                        <input type="text" class="form-control" name="link">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <x-admin.select-status name="status" key-selected="1" />
                     </div>
                 </div>
                 <!-- /.card-body -->

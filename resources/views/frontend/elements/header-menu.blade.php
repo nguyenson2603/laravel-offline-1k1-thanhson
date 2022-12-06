@@ -1,9 +1,9 @@
 <div class="bottom-part">
     <div class="container">
-        <div class="row">  
+        <div class="row">
             @include('frontend.elements.header-menu-vertial')
             @include('frontend.elements.header-menu-horizontal')
-            <div class="col-xxl-3 d-none d-xxl-inline-block">
+            {{-- <div class="col-xxl-3 d-none d-xxl-inline-block">
                 <div class="header-options">
                     <div class="vertical-slider no-arrow">
                         <div>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
